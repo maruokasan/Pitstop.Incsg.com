@@ -46,7 +46,5 @@ namespace Pitstop.Controllers
         {
             return View();
         }
-
-
     }
 }

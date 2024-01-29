@@ -1,0 +1,54 @@
+﻿@await Html.PartialAsync("Partial/_LayoutUserMaster.cshtml")
+@model AccountSettingsModel
+@{
+    Layout = "/Views/Shared/_LayoutDash.cshtml";
+    ViewData["Title"] = "Account Setting";
+}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/management.css">
+</head>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-custom">
+                <div class="card-header d-flex justify-content-center">
+                    <div class="card-title">
+                        <h3 class="card-label">
+                            General Settings
+                        </h3>
+                    </div>
+                </div>
+                <form>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label class="col-lg-5 col-form-label text-lg-right">Deactive account if inactive for number of days</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" asp-for="NumberOfDaysDeactiveAccount" id="NumberOfDaysDeactiveAccount"
+                                name="NumberOfDaysDeactiveAccount" placeholder="Input Number..." />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-5 col-form-label text-lg-right"></label>
+                            <div class="col-lg-7">
+                                <input type="button" class="btn-success btn btn-primary mr-2" value="Save" onclick="Save()"/>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between">
+        <button type="button" style="margin-top: 20px;" class="back-btn btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" onclick="window.location.href='@Url.Action("Index","UserMaster")'" data-wizard-type="action-prev">Back</button>
+    </div>
+}
+
+
+@section Scripts{
+<script src="~/js/account_settings.js"></script>
+}

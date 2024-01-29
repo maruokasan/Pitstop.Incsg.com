@@ -91,7 +91,6 @@ namespace Pitstop.Helper
             filterContext.HttpContext.Response.Cookies.Append(AppConstant.CookiesName.UserId, String.Empty);
             filterContext.HttpContext.Response.Cookies.Append(AppConstant.CookiesName.Username, String.Empty);
             filterContext.HttpContext.Response.Cookies.Append(AppConstant.CookiesName.RolePermission, String.Empty);
-            filterContext.HttpContext.Response.Cookies.Append(AppConstant.CookiesName.Jobcode, String.Empty);
 
             filterContext.Result = new RedirectResult("~/");
         }

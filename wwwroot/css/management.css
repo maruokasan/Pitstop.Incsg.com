@@ -1,0 +1,243 @@
+.wrapper {
+  padding-left: 0px;
+}
+
+/* Reset some basic elements */
+body, h3, input, button, select {
+  margin: 0;
+  padding: 0;
+}
+
+/* Main content styling */
+.card-custom {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border: 1px solid #eaeaea;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.card-body{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.card-header {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #eaeaea;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+
+.card{
+  border-radius: 10px !important;
+}
+
+.card-label {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Form fields and buttons */
+.form-control {
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 12px;
+  height: 37px;
+  width: 100%;
+}
+
+.form-others{
+  display: block; /* Allows margin auto to center the element */
+  width: 100%; /* Example width, adjust as needed */
+  margin: 0 auto; /* Centers the dropdown */
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 12px;
+  height: 37px; /* Adjust the height to fit your design */
+  -webkit-appearance: none; /* Removes default styling on webkit browsers */
+  -moz-appearance: none; /* Removes default styling on Firefox browsers */
+  appearance: none; /* Removes default arrow on some browsers */
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path fill="%230073FF" d="M7 10l5 5 5-5z"/></svg>') no-repeat; /* SVG for the arrow */
+  background-position: right 14px center; /* Position the arrow on the right */
+  background-size: 12px; /* Size of the arrow */
+  cursor: pointer; 
+}
+
+.input-icon {
+  position: relative;
+}
+
+.input-icon i {
+  position: absolute;
+  right: 10px;
+  top: calc(50% - 0.5em); /* Centers the icon vertically */
+  color: #aaa;
+}
+
+/* Datatable styling */
+.datatable-bordered {
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+  overflow: hidden; /* Ensures the inner table doesn't break the rounded corners */
+}
+
+#kt_datatable th, 
+#kt_datatable td {
+  padding: 20px;
+  border-bottom: 1px solid #eaeaea;
+  text-align: left;
+  width: calc(100% / number_of_columns);
+}
+
+/* Add spacing between form elements */
+.mb-7, .mb-3, .mb-5 {
+  margin-bottom: 1.5rem;
+}
+
+.card-label{
+  font-weight: bold !important;
+}
+
+.back-btn{
+  margin-left: 40px !important;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+.btn-info{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.datatable.datatable-default > .datatable-pager {
+  margin: 0px;
+  padding: 1rem 0;
+  padding-bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.datatable.datatable-default > .datatable-pager > .datatable-pager-nav {
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.datatable.datatable-default > .datatable-pager > .datatable-pager-nav > li {
+  padding: 0;
+  margin-right: 5px;
+  display: inline-block;
+}
+
+.datatable-pager-nav li a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 25px; /* Minimum width */
+  height: 25px; /* Height to keep it square */
+  font-size: 12px;
+}
+
+/* Remove border for number buttons */
+.datatable-pager-nav li a:not([aria-label]) {
+  border-radius: 10px; /* Rounded corners for the number buttons */
+  border: none; /* Remove border */
+}
+
+/* Hover effects */
+.datatable-pager-nav li a:hover:not(.active) {
+  color: #C1121F;
+}
+
+
+/* Additional styling to make non-active page numbers appear like buttons */
+.datatable-pager-nav li a:not(.active) {
+  background-color: #ecf1f6;
+  color: #7e8299;
+}
+
+.modal-content{
+  width: 550px;
+}
+
+.modal-label{
+  font-size: 11px;;
+  margin-bottom: 15px;
+}
+
+.modal-input{
+  width:270px;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  border: none !important;
+  padding-right: 5px !important;
+}
+
+.swal2-popup {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #f7f7f7; /* Light grey background */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+  justify-content: center; /* Center children vertically */
+  padding: 20px; /* Add some padding */
+}
+
+.swal2-validation-message{
+  display: none;
+}
+
+.assign-box{
+  height: 100%;
+}
+
+.flaticon2-arrow-up{
+  margin-left:5px;
+  color: #dc3545;
+}
+
+.flaticon2-arrow-down{
+  margin-left:5px;
+  color: #dc3545;
+}
+
+.btn-light-primary:hover{
+  background-color: #dc3545;
+}
+
+.datatable-table{
+  width:100%;
+  display: table !important;
+}
+
+.btn-top:hover{
+  border: 2px solid #c1121f !important; 
+  transition: border 0.1s ease-in-out !important; 
+}
+ .datatable-pager-size{
+  display: none;
+ }
+
+ .label-required {
+  color: red;
+}
+
+.select2-dropdown{
+  z-index:10000;
+}
+

@@ -55421,7 +55421,7 @@ body[data-kt-sticky-landing-header=on] {
     --bs-header-btn-icon-color: #ffffff;
     --bs-header-btn-bg-color: white;
     --bs-header-general-shadow: none;
-    --bs-header-general-bg-color: #f0f2f5;
+    --bs-header-general-bg-color: black;
     --bs-header-mobile-bg-color: #15171C;
     --bs-aside-bg-color: #15171C;
     --bs-aside-border-bottom-color: #1B1C22;

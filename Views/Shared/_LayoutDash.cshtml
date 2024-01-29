@@ -1,25 +1,32 @@
-﻿ <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <base href=""/>
+﻿<!DOCTYPE html>
+<html lang="en">
+	<!--begin::Head-->
+	<head><base href=""/>
 		<meta charset="utf-8" />
-        <title>Pitstop.IncSg</title>
+        <title>Pitstop.Incsg</title>
 		<meta property="og:url" content="https://keenthemes.com/metronic" />
 		<meta property="og:site_name" content="Keenthemes | Metronic" />
 		<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
-		<link rel="shortcut icon" href="~/images/pitstoplogo1.png" />
-		<!--begin::Fonts(mandatory for all pages)-->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
-		<!--end::Fonts-->
-		<!--begin::Vendor Stylesheets(used for this page only)-->
-		<link href="~/assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
-		<link href="~/assets/plugins/custom/vis-timeline/vis-timeline.bundle.css" rel="stylesheet" type="text/css" />
-		<!--end::Vendor Stylesheets-->
+		<link rel="shortcut icon" href="~/logo.png" />
+    <!--begin::Fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <!--end::Fonts-->
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta content="utf-8" http-equiv="encoding" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
 		<!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
 		<link href="~/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="~/assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
 		<link href="~/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 		<!--end::Global Stylesheets Bundle-->
-		<script>// Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }</script>
+@* 
+		<link href="~/src/plugins/flaticon2/flaticon.css" rel="stylesheet" type="text/css" />
+		<link href="~/src/plugins/flaticon/flaticon.css" rel="stylesheet" type="text/css" /> *@
+
+		<link rel="shortcut icon" href="~/logo.png" />
+		<script src="~/lib/jquery/dist/jquery.min.js"></script>
 	</head>
 
 <body>
@@ -36,23 +43,44 @@
         <!--=============== SWIPER JS ===============-->
         <script src="~/home/js/swiper-bundle.min.js"></script>
 
-    @await RenderSectionAsync("Scripts", required: false)
+    </script>
+
+	<!-- Core JS -->
+	<script src="~/lib/jquery/dist/jquery.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="~/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+
+    <!--begin::Global Config(global config for global JS scripts)-->
+    <script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1200 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#6993FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#F3F6F9", "dark": "#212121" }, "light": { "white": "#ffffff", "primary": "#E1E9FF", "secondary": "#ECF0F3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#212121", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#ECF0F3", "gray-300": "#E5EAEE", "gray-400": "#D6D6E0", "gray-500": "#B5B5C3", "gray-600": "#80808F", "gray-700": "#464E5F", "gray-800": "#1B283F", "gray-900": "#212121" } }, "font-family": "Poppins" };</script>
+    <!--end::Global Config-->
+    <!--begin::Global Theme Bundle(used by all pages)-->
+    <script src="~/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="~/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+    <script src="~/assets/js/scripts.bundle.js"></script>
+    <!--end::Global Theme Bundle-->
+    <!--begin::Page Scripts(used by this page)-->
+    <script src="~/assets/js/custom/widgets.js"></script>
+
+
+
+	@await RenderSectionAsync("Scripts", required: false)
     <script>
-        $(document).ajaxStart(function () {
+        $(document).ajaxStart(function(){
             $('.custom-loader-wrapper').css('display', 'flex');
-        }).ajaxStop(function () {
+        }).ajaxStop(function(){
             $('.custom-loader-wrapper').css('display', 'none');
         });
 
         function getRedirect(url) {
-            $.ajax({
-                url: contentUrl + "Home/CreateToken",
+            window.open(url, '_blank');
+            /*$.ajax({
+                url: contentUrl + "Dashboard/CreateToken",
                 type: "GET",
                 dataType: "JSON",
                 contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
                 success: function (result) {
                     if (result != null) {
-                        window.open(url + result, '_blank');
+                        window.open(url, '_blank');
                     }
                 },
                 error: function (request, status, error) {
@@ -62,26 +90,8 @@
                         showConfirmButton: true
                     });
                 }
-            });
+            });*/
         }
-        <!--begin::Javascript-->
-		<script>var hostUrl = "assets/";</script>
-		<!--begin::Global Javascript Bundle(mandatory for all pages)-->
-		<script src="~/assets/plugins/global/plugins.bundle.js"></script>
-		<script src="~/assets/js/scripts.bundle.js"></script>
-		<!--end::Global Javascript Bundle-->
-		<!--begin::Vendors Javascript(used for this page only)-->
-		<script src="~/assets/plugins/custom/datatables/datatables.bundle.js"></script>
-		<script src="~/assets/plugins/custom/vis-timeline/vis-timeline.bundle.js"></script>
-		<!--end::Vendors Javascript-->
-		<!--begin::Custom Javascript(used for this page only)-->
-		<script src="~/assets/js/widgets.bundle.js"></script>
-		<script src="~/assets/js/custom/widgets.js"></script>
-		<script src="~/assets/js/custom/apps/chat/chat.js"></script>
-		<script src="~/assets/js/custom/utilities/modals/upgrade-plan.js"></script>
-		<script src="~/assets/js/custom/utilities/modals/users-search.js"></script>
-		<!--end::Custom Javascript-->
-		<!--end::Javascript-->
-</script>
+    </script>
 </body>
 </html>

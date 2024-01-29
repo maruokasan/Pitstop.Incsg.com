@@ -1,0 +1,105 @@
+﻿@model RoleModel
+@await Html.PartialAsync("Partial/_LayoutUserMaster.cshtml")
+@{
+    Layout = "/Views/Shared/_LayoutDash.cshtml";
+    ViewData["Title"] = "Role Assign";
+}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/management.css">
+</head>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-custom">
+                <div class="card-header d-flex justify-content-center">
+                    <div class="card-title">
+                        <h3 class="card-label">
+                            Role
+                            <span class="d-block text-muted pt-2 font-size-sm">Assign Role</span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
+                        <form asp-controller="Role" asp-action="Assign" method="post" asp-route-returnurl="@ViewData["ReturnUrl"]" role="form" id="kt_assign_form">
+
+                            <input asp-for="Id" name="Id" type="text" hidden />
+
+                            <div class="form-group row">
+                                <label class="col-xl-3 col-lg-3 col-form-label">Role Name</label>
+                                <div class="col-lg-9 col-xl-9">
+                                    <input asp-for="Name" class="assign-box form-control form-control-lg form-control-solid" type="text" autocomplete="off" disabled />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-5">
+                                    <select class="assign-box select select-multiple form-control" id="multiple-left" multiple="multiple" size="20">
+                                        @foreach (var systemPermissionsUnAssigned in ViewBag.SystemPermissionsUnAssigned)
+                                        {
+                                            <option value="@systemPermissionsUnAssigned.Id" id="option-unassigned-@systemPermissionsUnAssigned.Id">@systemPermissionsUnAssigned.ClaimType - @systemPermissionsUnAssigned.ClaimValue</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-2 d-flex justify-content-center align-items-center">
+                                    <input class="btn btn-success mr-1" type="button" id="left" value="<" />
+                                    <input class="btn btn-success ml-1" type="button" id="right" value=">" style="margin-left:20px;"/>
+                                    <input type="button" id="leftall" value="<<" hidden />
+                                    <input type="button" id="rightall" value=">>" hidden />
+                                </div>
+                                <div class="col-5">
+                                    <select id="multiple-right" multiple="multiple" asp-for="SystemPermissionIds" class="assign-box form-control" size="20">
+                                        @foreach (var roleClaim in ViewBag.RoleClaims)
+                                        {
+                                            @foreach (var system in ViewBag.Systems)
+                                            {
+                                                @foreach (var systemPermission in ViewBag.SystemPermissions)
+                                                {
+                                                    @if (roleClaim.ClaimType == system.Name && roleClaim.ClaimValue == systemPermission.Name)
+                                                    {
+                                                        @if (system.Id == systemPermission.SystemId)
+                                                        {
+                                                            <option value="@systemPermission.Id" selected>@system.Name - @systemPermission.Name</option>
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <button id="save-assign" type="button" class="btn btn-primary font-weight-bold py-2 px-5 ml-2" style="margin-top:60px;">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" style="margin-left: 40px;"onclick="window.location.href='@Url.Action("Role","UserMaster")'" data-wizard-type="action-prev">Back</button>
+    </div>
+}
+
+
+@section Scripts {
+    <script src="@Url.Content("~/js/assign_role.js")"></script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script type="text/javascript">
+        let statesData = @Html.Raw(ViewBag.SystemPermissionsAssigned);
+        $.each(statesData, function () {
+            let data = this;
+            $("#option-unassigned-" + data.Id).remove();
+        })
+    </script>
+}

@@ -1,0 +1,87 @@
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-container {
+    display: flex; /* This will align the children side by side */
+    justify-content: flex-start; /* Align children to the start of the container */
+    gap: 5px; /* Optional: adds space between the children */
+    margin-left: 40px;
+  }
+
+.inline-dropdown {
+    flex: none; /* Don't allow the dropdowns to grow or shrink */
+  }
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 100%; /* This ensures the dropdown starts right after the .dropdown */
+    left: 0;
+    margin: 0;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Hover effect for links */
+.dropdown-menu .navi-link:hover {
+    background-color: whitesmoke;
+    width: 100%;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown-toggle:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-menu{
+    font-weight: 500;
+    white-space: nowrap;
+    width:100%;
+    will-change: transform;
+    width: 250px;
+}
+
+.dropdown-menu .navi-item {
+    width: 100%;
+}
+
+.navi-text{
+    margin-left: 5px;
+}
+
+.navi-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width:100%;
+}
+
+.navi-item {
+    display: flex;
+    align-items: center;
+}
+
+.navi{
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    display: block;
+}
+
+.navi .navi-item .navi-link{
+    padding: 0.75rem 1.5rem;
+    align-items: center;
+}

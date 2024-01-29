@@ -1,0 +1,50 @@
+﻿@await Html.PartialAsync("Partial/_LayoutUserMaster.cshtml")
+@{
+    Layout = "/Views/Shared/_LayoutDash.cshtml";
+    ViewData["Title"] = "Master Role";
+}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/management.css">
+</head>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-custom" style="border-radius:10px">
+                <div class="card-body">
+                    <div class="mb-7">
+                        <div class="row align-items-center">
+                            <div class="col-lg-12 col-xl-12">
+                                <div class="row align-items-center mb-5">
+                                    <div class="col-md-2 my-2 my-md-0">
+                                        <label class="mr-3 mb-0 d-none d-md-block">Search</label>
+                                    </div>
+                                    <div class="col-md-4 my-2 my-md-0">
+                                        <div class="input-icon">
+                                            <input type="text" class="form-control" placeholder="Search..." id="kt_datatable_search_query" />
+                                            <span>
+                                                <i class="flaticon2-search-1 text-muted"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="d-flex justify-content-between">
+        <button type="button" class="back-btn btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" onclick="history.back()" data-wizard-type="action-prev">Back</button>
+    </div>
+}
+
+@section Scripts{
+    <script src="~/list/list_role_master.js"></script>
+}
