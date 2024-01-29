@@ -1,0 +1,83 @@
+.login-logo{
+  height: 70px;
+  width: 70px;
+}
+
+.login-card{
+  margin-top: -550px;
+  box-shadow: 8px 8px 15px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  border: solid 2px;
+  border-color: white;
+}
+
+.login-details{
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.signin-btn{
+border-radius: 10px;
+}
+
+.signin-btn:hover{
+  color:white !important;
+  background-color: #f64e60 !important;
+}
+
+.link-primary:hover{
+  color:#Ffe2e5  !important;
+}
+
+.forgot-login{
+  margin-top:-20px;
+}
+
+.back-btn{
+  margin-top: 20px !important;
+  border-radius: 15px;
+}
+
+.swal2-confirm{
+  background-color: #dc3545 !important;
+  color: white !important;
+  display: block !important;
+}
+
+.swal2-confirm:hover{
+  color: white !important;
+  background-color: #ee2d41 !important;
+}
+
+/* Custom class for FormValidation error messages */
+.fv-plugins-message-container .invalid-feedback {
+  color: #ff0000 !important; /* Red color for error messages */
+}
+.invalid-feedback {
+  display: block; /* Make it block to ensure it's always visible when there's an error */
+  color: #dc3545 !important; /* Bootstrap's default color for errors */
+}
+
+.left-login{
+  background-color: black;
+}
+
+.text-dark{
+  color: white !important;
+}
+
+.link-primary{
+  color: white !important;
+}
+
+.btn-primary{
+  background-color: white !important;
+  color: black !important;
+}
+
+.back-btn{
+  background-color: white !important;
+  color: black !important;
+}
