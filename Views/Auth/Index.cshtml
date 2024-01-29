@@ -1,0 +1,122 @@
+﻿@model Pitstop.Models.UserLoginModel
+@{
+    Layout = "/Views/Shared/_LayoutFullPage.cshtml";
+    ViewBag.Title = "Login";
+    ViewData["Title"] = "Log in";
+}
+
+<link rel="stylesheet" href="~/css/login.css">
+
+		<!--begin::Main-->
+		<!--begin::Root-->
+		<div class="d-flex flex-column flex-root">
+			<!--begin::Authentication - Sign-in -->
+			<div class="d-flex flex-column flex-lg-row flex-column-fluid">
+				<!--begin::Logo-->
+				<a href="Home/Index" class="d-block d-lg-none mx-auto py-10">
+					<img alt="Logo" src="~/images/pitstoplogo.jpg" class="login-logo" />
+				</a>
+				<!--end::Logo-->
+				<!--begin::Aside-->
+				<div class="d-flex flex-column flex-column-fluid flex-center w-lg-50 p-10 left-login">
+					<!--begin::Wrapper-->
+					<div class="d-flex justify-content-between flex-column-fluid flex-column w-100 mw-450px">
+						<!--begin::Header-->
+						<div class="d-flex flex-stack py-2">
+							<!--begin::Back link-->
+							<div class="me-2"></div>
+							<!--end::Back link-->
+							<!--begin::Sign Up link-->
+							@* <div class="m-0">
+								<span class="text-gray-400 fw-bold fs-5 me-2" data-kt-translate="sign-in-head-desc">Not a Member yet?</span>
+								<a href="../../demo17/dist/authentication/layouts/fancy/sign-up.html" class="link-primary fw-bold fs-5" data-kt-translate="sign-in-head-link">Sign Up</a>
+							</div> *@
+							<!--end::Sign Up link=-->
+						</div>
+						<!--end::Header-->
+						<!--begin::Body-->
+						<div class="py-20">
+							<!--begin::Form-->
+							<form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" action="/Auth/Login" method="post">
+								@Html.AntiForgeryToken()
+								<!--begin::Body-->
+								<div class="card-body login-card">
+									<!--begin::Heading-->
+									<div class="text-start mb-10">
+										<!--begin::Title-->
+										<h1 class="text-dark mb-3 fs-3x" data-kt-translate="sign-in-title">Sign In</h1>
+										<!--end::Title-->
+										<!--begin::Text-->
+										<!--end::Link-->
+									</div>
+									<!--begin::Heading-->
+									<!--begin::Input group=-->
+									<div class="fv-row mb-8">
+										<!--begin::Email-->
+										<input type="text" placeholder="Email" name="username" id="username" autocomplete="off" data-kt-translate="sign-in-input-email" class="login-details form-control form-control-solid" />
+										<!--end::Email-->
+									</div>
+									<!--end::Input group=-->
+									<div class="fv-row mb-7">
+										<!--begin::Password-->
+										<input type="password" placeholder="Password" name="password" id="password" autocomplete="off" class="login-details form-control form-control-solid pe-5" required />
+										<!--end::Password-->
+									</div>
+									<!--end::Input group=-->
+									<div class="checkbox-inline">
+										<label class="checkbox m-0 text-muted">
+											<input type="checkbox" name="remember" id="remember" />
+											<span></span>Remember me
+										</label>
+									</div>
+									<!--begin::Wrapper-->
+									<div class="forgot-login d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-10">
+										<div></div>
+										<!--begin::Link-->
+										<a href="/Auth/ForgotPasswordPage" class="link-primary">Forgot Password ?</a>
+										<!--end::Link-->
+									</div>
+									<!--end::Wrapper-->
+									<!--begin::Actions-->
+									<div class="d-flex flex-stack">
+										<!--begin::Submit-->
+										<button id="kt_sign_in_submit" class="signin-btn btn btn-primary me-2 flex-shrink-0">
+											<!--begin::Indicator label-->
+											<span class="indicator-label" data-kt-translate="sign-in-submit">Sign In</span>
+											<!--end::Indicator label-->
+											<!--begin::Indicator progress-->
+											<span class="indicator-progress">
+												<span data-kt-translate="general-progress">Please wait...</span>
+												<span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+											</span>
+											<!--end::Indicator progress-->
+										</button>
+										<!--end::Submit-->
+									</div>
+									<!--end::Actions-->
+								</div>
+								<!--begin::Body-->
+							</form>
+								<div class="d-flex justify-content-between">
+									<button type="button" class=" back-btn btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" onclick="history.back()" data-wizard-type="action-prev">Back</button>
+								</div>
+							<!--end::Form-->
+						</div>
+						<!--end::Body-->
+                        </div>
+					<!--end::Wrapper-->
+				</div>
+				<!--end::Aside-->
+				<!--begin::Body-->
+				<div class="d-none d-lg-flex flex-lg-row-fluid w-50 justify-content-center align-items-center" style="background-color: white;">
+					<a href="/Home/Index">
+                <img src="~/images/PSlogo.png" alt="Your Logo" style="width: 300px; height: 300px;"/></div>
+				</a>
+				<!--begin::Body-->
+			</div>
+			<!--end::Authentication - Sign-in-->
+		</div>
+		<!--end::Root-->
+		<!--end::Main-->
+
+		<script src="~/assets/js/custom/authentication/sign-in/general.js"> </script>

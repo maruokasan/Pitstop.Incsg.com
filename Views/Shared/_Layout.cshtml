@@ -1,0 +1,117 @@
+﻿ <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <base href=""/>
+		<meta charset="utf-8" />
+        <title>Pitstop.IncSg</title>
+		<meta property="og:url" content="https://keenthemes.com/metronic" />
+		<meta property="og:site_name" content="Keenthemes | Metronic" />
+		<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
+		<link rel="shortcut icon" href="~/images/pitstoplogo1.png" />
+		<!--begin::Fonts(mandatory for all pages)-->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+<body>
+            <!--Content-->
+            <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+                @RenderBody()
+            </div>
+
+        <!--==================== FOOTER ====================-->
+        <footer class="footer section">
+            <div class="footer__container container grid">
+                <div class="footer__content">
+                    <h3 class="footer__title">Our information</h3>
+                    <ul class="footer__list">
+                        <li>PitstopIncsg@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="footer__content">
+                    <h3 class="footer__title">About Us</h3>
+
+                    <ul class="footer__links">
+                        <li>
+                            <a href="#" class="footer__link">Customer Support</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">Copyright</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer__content">
+                    <h3 class="footer__title">Product</h3>
+
+                    <ul class="footer__links">
+                        <li>
+                            <a href="#" class="footer__link">Hoodies</a>
+                        </li>
+                        <li>
+                            <a href="Home/index" class="footer__link">More Coming Soon</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer__content">
+                    <h3 class="footer__title">Social</h3>
+
+                    <ul class="footer__social">
+                        <a href="https://twitter.com/" target="_blank" class="footer__social-link">
+                            <i class='bx bxl-tiktok'></i>
+                        </a>
+
+                        <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                            <i class='bx bxl-instagram' ></i>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+
+            <span class="footer__copy">&#169; Pitstop.IncSg. All rigths reserved</span>
+        </footer>
+
+        <!--=============== SCROLL UP ===============-->
+        <a href="#" class="scrollup" id="scroll-up"> 
+            <i class='bx bx-up-arrow-alt scrollup__icon' ></i>
+        </a>
+
+        <!--=============== SWIPER JS ===============-->
+        <script src="~/home/js/swiper-bundle.min.js"></script>
+
+        <!--=============== MAIN JS ===============-->
+        <script src="~/home/js/main.js"></script>
+
+@await RenderSectionAsync("Scripts", required: false)
+<script>
+    $(document).ajaxStart(function () {
+        $('.custom-loader-wrapper').css('display', 'flex');
+    }).ajaxStop(function () {
+        $('.custom-loader-wrapper').css('display', 'none');
+    });
+
+    function getRedirect(url) {
+        $.ajax({
+            url: contentUrl + "Home/CreateToken",
+            type: "GET",
+            dataType: "JSON",
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            success: function (result) {
+                if (result != null) {
+                    window.open(url + result, '_blank');
+                }
+            },
+            error: function (request, status, error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: request.responseJSON.message,
+                    showConfirmButton: true
+                });
+            }
+        });
+    }
+</script>
+</body>
+</html>
