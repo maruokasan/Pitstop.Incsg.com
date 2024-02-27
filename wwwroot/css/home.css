@@ -22,20 +22,14 @@
     width: 40px !important;
     height:40px !important;
   }
-  .product-image {
-    width: 100%; /* Stretch to the full width of its parent */
-    height: 650px !important; /* Maintain the aspect ratio */
-    display: block; /* Remove any default inline padding/margin */
-  }
   .swiper-container-bottom {
-    width: 100%;
+    /* width: 100%; */
     height: auto;
     display: flex;
     align-items: center;
     padding: 20px;
   }
 }
-
 
 .swiper-container {
   width: 100%;
@@ -60,6 +54,7 @@
   height: 800px; /* Maintain the aspect ratio */
   display: block; /* Remove any default inline padding/margin */
   border-radius: 10px;
+  margin-top: 85px;
 }
 
 
@@ -223,4 +218,10 @@
 
 .footer__title{
   margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer__content{
+
 }

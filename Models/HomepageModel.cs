@@ -6,7 +6,10 @@
         public string UserEmail { get; set; }
         public string UserRole { get; set; }
 
-        public List<Carousel2>  LatestCarousel2{ get; set; }
-
+        public List<Section1Media> Section1Medias { get; set; }
+        public List<Section2Media> Section2Medias { get; set; }
+        public List<FeaturedItem> FeaturedItems { get; set; }
+        public List<ProductMedia> ProductMedias { get; set; }
+        public List<OurStorys> OurStorys { get; set; }
     }
 }

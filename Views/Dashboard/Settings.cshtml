@@ -1,0 +1,722 @@
+	@{
+    Layout = "/Views/Shared/_LayoutDash.cshtml";
+    ViewBag.Title = "Settings";
+    ViewData["Title"] = "Settings";
+	}
+					<!--begin::Content-->
+					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+						<!--begin::Container-->
+						<div class="container-xxl" id="kt_content_container">
+							<!--begin::Card-->
+							<div class="card card-flush">
+								<!--begin::Card body-->
+								<div class="card-body">
+
+									<!--begin:::Tabs-->
+									<ul class="nav nav-tabs nav-line-tabs nav-line-tabs-2x border-transparent fs-4 fw-semibold mb-15">
+
+										<!--begin:::Tab item-->
+										<li class="nav-item">
+											<a class="nav-link text-active-primary d-flex align-items-center pb-5 active" data-bs-toggle="tab" href="#kt_ecommerce_settings_general">
+											<i class="ki-duotone ki-home fs-2 me-2"></i>General</a>
+										</li>
+										<!--end:::Tab item-->
+
+										<!--begin:::Tab item-->
+										<li class="nav-item">
+											<a class="nav-link text-active-primary d-flex align-items-center pb-5" data-bs-toggle="tab" href="#kt_ecommerce_settings_homepage">
+											<i class="ki-duotone ki-people fs-2 me-2">
+												<span class="path1"></span>
+												<span class="path2"></span>
+												<span class="path3"></span>
+												<span class="path4"></span>
+												<span class="path5"></span>
+											</i>Homepage</a>
+										</li>
+										<!--end:::Tab item-->
+									</ul>
+									<!--end:::Tabs-->
+
+									<!--begin:::Tab content-->
+									<div class="tab-content" id="myTabContent">
+
+										<!--begin:::Tab pane-->
+										<div class="tab-pane fade show active" id="kt_ecommerce_settings_general" role="tabpanel">
+											<!--begin::Form-->
+											<form id="kt_ecommerce_settings_general_form" class="form" action="#">
+												<!--begin::Heading-->
+												<div class="row mb-7">
+													<div class="col-md-9 offset-md-3">
+														<h2>General Settings</h2>
+													</div>
+												</div>
+												<!--end::Heading-->
+												<!--begin::Input group-->
+												<div class="row fv-row mb-7">
+													<div class="col-md-3 text-md-end">
+														<!--begin::Label-->
+														<label class="fs-6 fw-semibold form-label mt-3">
+															<span class="required">Meta Title</span>
+															<span class="ms-1" data-bs-toggle="tooltip" title="Set the title of the store for SEO.">
+																<i class="ki-duotone ki-information-5 text-gray-500 fs-6">
+																	<span class="path1"></span>
+																	<span class="path2"></span>
+																	<span class="path3"></span>
+																</i>
+															</span>
+														</label>
+														<!--end::Label-->
+													</div>
+													<div class="col-md-9">
+														<!--begin::Input-->
+														<input type="text" class="form-control form-control-solid" name="meta_title" value="" />
+														<!--end::Input-->
+													</div>
+												</div>
+												<!--end::Input group-->
+												<!--begin::Input group-->
+												<div class="row fv-row mb-7">
+													<div class="col-md-3 text-md-end">
+														<!--begin::Label-->
+														<label class="fs-6 fw-semibold form-label mt-3">
+															<span>Meta Tag Description</span>
+															<span class="ms-1" data-bs-toggle="tooltip" title="Set the description of the store for SEO.">
+																<i class="ki-duotone ki-information-5 text-gray-500 fs-6">
+																	<span class="path1"></span>
+																	<span class="path2"></span>
+																	<span class="path3"></span>
+																</i>
+															</span>
+														</label>
+														<!--end::Label-->
+													</div>
+													<div class="col-md-9">
+														<!--begin::Input-->
+														<textarea class="form-control form-control-solid" name="meta_description"></textarea>
+														<!--end::Input-->
+													</div>
+												</div>
+												<!--end::Input group-->
+												<!--begin::Input group-->
+												<div class="row fv-row mb-7">
+													<div class="col-md-3 text-md-end">
+														<!--begin::Label-->
+														<label class="fs-6 fw-semibold form-label mt-3">
+															<span>Meta Keywords</span>
+															<span class="ms-1" data-bs-toggle="tooltip" title="Set keywords for the store separated by a comma.">
+																<i class="ki-duotone ki-information-5 text-gray-500 fs-6">
+																	<span class="path1"></span>
+																	<span class="path2"></span>
+																	<span class="path3"></span>
+																</i>
+															</span>
+														</label>
+														<!--end::Label-->
+													</div>
+													<div class="col-md-9">
+														<!--begin::Input-->
+														<input type="text" class="form-control form-control-solid" name="meta_keywords" value="" data-kt-ecommerce-settings-type="tagify" />
+														<!--end::Input-->
+													</div>
+												</div>
+												<!--end::Input group-->
+												<!--begin::Input group-->
+												<div class="row fv-row mb-7">
+													<div class="col-md-3 text-md-end">
+														<!--begin::Label-->
+														<label class="fs-6 fw-semibold form-label mt-3">
+															<span>Theme</span>
+															<span class="ms-1" data-bs-toggle="tooltip" title="Set theme style for the store.">
+																<i class="ki-duotone ki-information-5 text-gray-500 fs-6">
+																	<span class="path1"></span>
+																	<span class="path2"></span>
+																	<span class="path3"></span>
+																</i>
+															</span>
+														</label>
+														<!--end::Label-->
+													</div>
+													<div class="col-md-9">
+														<div class="w-100">
+															<!--begin::Select2-->
+															<select class="form-select form-select-solid" name="theme" data-control="select2" data-hide-search="true" data-placeholder="Select a layout">
+																<option></option>
+																<option value="Default" selected="selected">Default</option>
+																<option value="Minimalist">Minimalist</option>
+																<option value="Dark">Dark</option>
+																<option value="High_Contrast">High Contrast</option>
+															</select>
+															<!--end::Select2-->
+														</div>
+													</div>
+												</div>
+												<!--end::Input group-->
+												<!--begin::Input group-->
+												<div class="row fv-row mb-7">
+													<div class="col-md-3 text-md-end">
+														<!--begin::Label-->
+														<label class="fs-6 fw-semibold form-label mt-3">
+															<span>Default Layout</span>
+															<span class="ms-1" data-bs-toggle="tooltip" title="Set default layout style for the store.">
+																<i class="ki-duotone ki-information-5 text-gray-500 fs-6">
+																	<span class="path1"></span>
+																	<span class="path2"></span>
+																	<span class="path3"></span>
+																</i>
+															</span>
+														</label>
+														<!--end::Label-->
+													</div>
+													<div class="col-md-9">
+														<div class="w-100">
+															<!--begin::Select2-->
+															<select class="form-select form-select-solid" name="layout" data-control="select2" data-hide-search="true" data-placeholder="Select a layout">
+																<option></option>
+																<option value="Default" selected="selected">Default</option>
+																<option value="Electronics">Electronics</option>
+																<option value="Fashion">Fashion</option>
+																<option value="Home">Home</option>
+																<option value="Dining">Dining</option>
+																<option value="Interior">Interior</option>
+															</select>
+															<!--end::Select2-->
+														</div>
+													</div>
+												</div>
+												<!--end::Input group-->
+												<!--begin::Action buttons-->
+												<div class="row py-5">
+													<div class="col-md-9 offset-md-3">
+														<div class="d-flex">
+															<!--begin::Button-->
+															<button type="reset" data-kt-ecommerce-settings-type="cancel" class="btn btn-light me-3">Cancel</button>
+															<!--end::Button-->
+															<!--begin::Button-->
+															<button type="submit" data-kt-ecommerce-settings-type="submit" class="btn btn-primary">
+																<span class="indicator-label">Save</span>
+																<span class="indicator-progress">Please wait... 
+																<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+															</button>
+															<!--end::Button-->
+														</div>
+													</div>
+												</div>
+												<!--end::Action buttons-->
+											</form>
+											<!--end::Form-->
+										</div>
+										<!--end:::Tab pane-->
+
+
+										<!--begin:::Tab pane-->
+										<div class="tab-pane fade" id="kt_ecommerce_settings_homepage" role="tabpanel">
+											<!--begin::Form-->
+											<form id="kt_ecommerce_settings_homepage_form" class="form" action="#" enctype="multipart/form-data">
+												<!--begin::Heading-->
+												<div class="row mb-7">
+													<div class="col-md-9 offset-md-3">
+														<h2>Homepage Settings</h2>
+													</div>
+												</div>
+												<!--end::Heading-->
+
+										<!-- Section 1: Upload Image/Video -->
+										<div class="card mb-4">
+											<div class="card-header">
+												<h3 class="card-title">Section 1 Carousel</h3>
+											</div>
+											<!-- Section 1: Upload Image/Video -->
+											<div class="overflow-auto" style="padding: 30px;">
+												<!-- Section 1: Upload Image/Video Table -->
+												<table class="table table-bordered">
+													<thead>
+														<tr>
+															<th>Upload File</th>
+															<th>Action</th>
+														</tr>
+													</thead>
+													<tbody>
+														<!-- Section 1: Upload Image/Video -->
+														<tr class="fv-row mb-7 mt-7 align-items-center">
+															<td>
+																<div class="file-input-container">
+																	<input type="file" class="form-control form-control-solid section1-file-input" name="section1_media" accept="image/*,video/*" />
+																	<!-- Add the following span to display the file name -->
+																	<span class="file-name"></span>
+																</div>
+															</td>
+															<td><button type="button" class="btn btn-primary section1-upload-button">Upload</button></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+
+
+										<!-- Section 2: Upload Multiple Images -->
+										<div class="card mb-4">
+											<div class="card-header">
+												<h3 class="card-title">Section 2 Carousel</h3>
+											</div>
+											<!-- Section 2: Upload Multiple Images -->
+											<div class="overflow-auto" style="padding: 30px;">
+												<!-- Section 2: Upload Image/Video Table -->
+												<table class="table table-bordered">
+													<thead>
+														<tr>
+															<th>Order</th>
+															<th>Upload File</th>
+															<th>Action</th>
+														</tr>
+													</thead>
+													<tbody>
+														<!-- Section 2: Upload Multiple Images - Order 1 -->
+														<tr class="fv-row mb-7 mt-7 align-items-center">
+															<td>1</td>
+															<td>
+																<input type="file" class="form-control form-control-solid section2-file-input" name="section2_media_order1[]" accept="image/*,video/*" />
+															</td>
+															<td><button type="button" class="btn btn-primary section2-upload-button" data-order="1">Upload</button></td>
+														</tr>
+														<!-- Section 2: Upload Multiple Images - Order 2 -->
+														<tr class="fv-row mb-7">
+															<td>2</td>
+															<td>
+																<input type="file" class="form-control form-control-solid section2-file-input" name="section2_media_order2[]" accept="image/*,video/*" />
+															</td>
+															<td><button type="button" class="btn btn-primary section2-upload-button" data-order="2">Upload</button></td>
+														</tr>
+														<!-- Section 2: Upload Multiple Images - Order 3 -->
+														<tr class="fv-row mb-7">
+															<td>3</td>
+															<td>
+																<input type="file" class="form-control form-control-solid section2-file-input" name="section2_media_order3[]" accept="image/*,video/*" />
+															</td>
+															<td><button type="button" class="btn btn-primary section2-upload-button" data-order="3">Upload</button></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+
+										<!-- Featured Items: Upload Image/Video -->
+										<div class="card mb-4">
+											<div class="card-header">
+												<h3 class="card-title">Featured Items</h3>
+											</div>
+											<div class="overflow-auto" style="padding:20px;">
+												<!-- Featured Item Upload Table -->
+												<table class="table table-bordered">
+													<thead>
+														<tr>
+															<th>Order</th>
+															<th>Upload File</th>
+															<th>Title</th>
+															<th>Price</th>
+															<th>Action</th>
+														</tr>
+													</thead>
+													<tbody>
+														<!-- Featured Item Upload - Order 1 -->
+														<tr class="fv-row mb-7 mt-7 align-items-center">
+															<td>1</td>
+															<td>
+																<input type="file" class="form-control form-control-solid featured-file-input" name="featured_media_order1[]" accept="image/*,video/*" />
+																<label class="file-label" for="featured_media_order1[]" id="featured-file-label-1">No file chosen</label> <!-- Label to display filename -->
+															</td>
+															<td><input type="text" class="form-control form-control-solid featured-title-input" name="featured_title_order1" placeholder="Title" /></td>
+															<td><input type="text" class="form-control form-control-solid featured-price-input" name="featured_price_order1" placeholder="Price" /></td>
+															<td><button type="button" class="btn btn-primary featured-upload-button" data-order="1">Upload</button></td>
+														</tr>
+
+														<!-- Featured Item Upload - Order 2 -->
+														<tr class="fv-row mb-7">
+															<td>2</td>
+															<td>
+																<input type="file" class="form-control form-control-solid featured-file-input" name="featured_media_order2[]" accept="image/*,video/*" />
+																<label class="file-label" for="featured_media_order2[]" id="featured-file-label-2">No file chosen</label> <!-- Label to display filename -->
+															</td>
+															<td><input type="text" class="form-control form-control-solid featured-title-input" name="featured_title_order2" placeholder="Title" /></td>
+															<td><input type="text" class="form-control form-control-solid featured-price-input" name="featured_price_order2" placeholder="Price" /></td>
+															<td><button type="button" class="btn btn-primary featured-upload-button" data-order="2">Upload</button></td>
+														</tr>
+
+														<!-- Featured Item Upload - Order 3 -->
+														<tr class="fv-row mb-7">
+															<td>3</td>
+															<td>
+																<input type="file" class="form-control form-control-solid featured-file-input" name="featured_media_order3[]" accept="image/*,video/*" />
+																<label class="file-label" for="featured_media_order3[]" id="featured-file-label-3">No file chosen</label> <!-- Label to display filename -->
+															</td>
+															<td><input type="text" class="form-control form-control-solid featured-title-input" name="featured_title_order3" placeholder="Title" /></td>
+															<td><input type="text" class="form-control form-control-solid featured-price-input" name="featured_price_order3" placeholder="Price" /></td>
+															<td><button type="button" class="btn btn-primary featured-upload-button" data-order="3">Upload</button></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+
+										<!-- Our Story: Upload Image/Content -->
+										<div class="card mb-4">
+											<div class="card-header">
+												<h3 class="card-title">Our Story</h3>
+											</div>
+											<div class="overflow-auto" style="padding: 20px;">
+												<!-- Our Story Upload Table -->
+												<table id="ourstory-table" class="table table-bordered">
+													<thead>
+														<tr>
+															<th>Upload Image</th>
+															<th>Title</th>
+															<th>Description</th>
+															<th>Action</th>
+														</tr>
+													</thead>
+													<tbody>
+														<!-- Rows will be dynamically added here -->
+													</tbody>
+												</table>
+											</div>
+										</div>
+
+
+											</form>
+											<!--end::Form-->
+										</div>
+										<!--end:::Tab pane-->
+
+									</div>
+									<!--end:::Tab content-->
+								</div>
+								<!--end::Card body-->
+							</div>
+							<!--end::Card-->
+						</div>
+						<!--end::Container-->
+					</div>
+					<!--end::Content-->
+					
+<script>
+	// Define the base URL
+const baseUrl = '/Dashboard/';
+
+// Section 1
+document.querySelectorAll('.section1-file-input').forEach(input => {
+    input.addEventListener('change', function () {
+        const label = this.parentElement.querySelector('.file-name');
+        if (label) {
+            if (this.files.length > 0) {
+                label.textContent = this.files[0].name;
+            } else {
+                label.textContent = '';
+            }
+        }
+    });
+});
+
+// Define a function to handle the upload button click event
+function handleUploadButtonClick() {
+    // Get the file input element associated with this upload button
+    const fileInput = event.target.closest('tr').querySelector('.section1-file-input');
+    
+    if (fileInput.files.length > 0) {
+        const formData = new FormData();
+        formData.append('mediaFile', fileInput.files[0]);
+
+        fetch(`${baseUrl}Carousel1Upload`, {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => {
+            if (response.ok) {
+                // File uploaded successfully
+                Swal.fire('Success', 'File uploaded successfully', 'success');
+				window.location.reload(); 
+            } else {
+                // Error handling
+                Swal.fire('Error', 'File upload failed', 'error');
+            }
+        })
+        .catch(error => {
+            // Error handling
+            Swal.fire('Error', 'File upload failed', 'error');
+        });
+    } else {
+        Swal.fire('Error', 'No file selected for upload.', 'error');
+    }
+}
+
+// Attach the event listener to the document and delegate it to the upload button class
+document.addEventListener('click', function (event) {
+    if (event.target.classList.contains('section1-upload-button')) {
+        handleUploadButtonClick();
+    }
+});
+
+// Fetch carousel data from server and update the HTML table
+fetch('/Dashboard/GetCarousel1Data')
+    .then(response => response.json())
+    .then(data => {
+        // Process the retrieved data
+        console.log('Retrieved data:', data);
+
+        // Assuming there's only one row in the table
+        const row = document.querySelector('.fv-row');
+
+        if (row) {
+            // Assuming the file name is stored in the first item of the data array
+            const fileName = data.length > 0 ? data[0].fileName : '';
+
+            // Update the file name display
+            const fileNameDisplay = row.querySelector('.file-name');
+            if (fileNameDisplay) {
+                fileNameDisplay.textContent = fileName || 'No file selected';
+            }
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching carousel data:', error);
+    });
+
+// Section 2 Upload Button Click Event
+document.querySelectorAll('.section2-upload-button').forEach(button => {
+    button.addEventListener('click', function () {
+        const order = this.getAttribute('data-order');
+        const fileInput = document.querySelector(`input[name="section2_media_order${order}[]"]`);
+        
+        if (fileInput && fileInput.files && fileInput.files.length > 0) {
+            const formData = new FormData();
+            formData.append('order', order); // Make sure to use 'order' instead of 'carouselNumber'
+            formData.append('imageFile', fileInput.files[0]);
+
+            fetch('/Dashboard/Carousel2Upload', { // Adjust the URL according to your route
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => {
+                if (response.ok) {
+                    Swal.fire('Success', 'File uploaded successfully', 'success');
+					window.location.reload(); 
+                } else {
+                    Swal.fire('Error', 'File upload failed', 'error');
+                }
+            })
+            .catch(error => {
+                Swal.fire('Error', 'File upload failed', 'error');
+            });
+        } else {
+            Swal.fire('Error', 'No file selected for upload.', 'error');
+        }
+    });
+});
+
+// Featured Item Upload Button Click Event
+document.querySelectorAll('.featured-upload-button').forEach(button => {
+    button.addEventListener('click', function () {
+        const order = this.getAttribute('data-order');
+        const fileInput = document.querySelector(`input[name="featured_media_order${order}[]"]`);
+        const titleInput = document.querySelector(`input[name="featured_title_order${order}"]`);
+        const priceInput = document.querySelector(`input[name="featured_price_order${order}"]`);
+        
+        if (fileInput && fileInput.files && fileInput.files.length > 0) {
+            const formData = new FormData();
+            formData.append('imageFile', fileInput.files[0]);
+            formData.append('title', titleInput.value);
+            formData.append('price', priceInput.value);
+            formData.append('order', order);
+
+            // Send AJAX request to upload the file
+            fetch('/Dashboard/UploadFeaturedItem', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => {
+                if (response.ok) {
+                    // File uploaded successfully
+                    Swal.fire('Success', 'File uploaded successfully', 'success');
+					window.location.reload(); 
+                } else {
+                    // Error handling
+                    Swal.fire('Error', 'File upload failed', 'error');
+                }
+            })
+            .catch(error => {
+                // Error handling
+                Swal.fire('Error', 'File upload failed', 'error');
+            });
+        } else {
+            Swal.fire('Error', 'No file selected for upload.', 'error');
+        }
+    });
+});
+
+// Fetch existing featured items data
+fetch('/Dashboard/GetFeaturedItems')
+    .then(response => response.json())
+    .then(data => {
+        console.log('Retrieved data:', data); // Log retrieved data
+        // Check if data is available
+        if (data && data.length > 0) {
+            // Loop through each featured item data
+            data.forEach((item, index) => {
+                console.log('Processing item:', item); // Log each item
+                // Select the corresponding elements based on the order
+                const order = item.order;
+                const fileNameLabel = document.querySelector(`#featured-file-label-${order}`);
+                const titleInput = document.querySelector(`input[name="featured_title_order${order}"]`);
+                const priceInput = document.querySelector(`input[name="featured_price_order${order}"]`);
+                
+                // Populate the input fields with the retrieved data
+                if (fileNameLabel && titleInput && priceInput) {
+                    // Display the filename
+                    if (item.fileName) {
+                        fileNameLabel.textContent = item.fileName;
+                        fileNameLabel.classList.add('file-selected');
+                    }
+                    // Populate title and price
+                    titleInput.value = item.title;
+                    priceInput.value = item.price;
+                }
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching featured items:', error);
+    });
+
+// Handle click event on file name label
+document.querySelectorAll('.file-label').forEach(label => {
+    label.addEventListener('click', function () {
+        const order = this.getAttribute('data-order');
+        const fileInput = document.querySelector(`input[name="featured_media_order${order}[]"]`);
+        if (fileInput) {
+            fileInput.click(); // Trigger click event on file input
+        }
+    });
+});
+
+// Handle change event on file input
+document.querySelectorAll('.featured-file-input').forEach(input => {
+    input.addEventListener('change', function () {
+        const fileNameLabel = this.nextElementSibling; // Get the label next to the file input
+        if (this.files && this.files.length > 0) {
+            fileNameLabel.textContent = this.files[0].name; // Display the selected file name
+            fileNameLabel.classList.add('file-selected');
+        } else {
+            fileNameLabel.textContent = 'No file chosen';
+            fileNameLabel.classList.remove('file-selected');
+        }
+    });
+});
+
+// Function to dynamically add a row for uploading Our Story item
+function addOurStoryRow() {
+    const tbody = document.querySelector('#ourstory-table tbody');
+
+    // Create a new row
+    const tr = document.createElement('tr');
+    tr.classList.add('fv-row', 'mb-7', 'align-items-center');
+
+    // Upload Image column
+    const uploadCell = document.createElement('td');
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.classList.add('form-control', 'form-control-solid', 'ourstory-file-input');
+    fileInput.name = 'ourstory_media';
+    fileInput.accept = 'image/*';
+    const fileLabel = document.createElement('label');
+    fileLabel.classList.add('file-label');
+    fileLabel.htmlFor = 'ourstory_media';
+    fileLabel.textContent = 'No file chosen';
+    uploadCell.appendChild(fileInput);
+    uploadCell.appendChild(fileLabel);
+    tr.appendChild(uploadCell);
+
+    // Title column
+    const titleCell = document.createElement('td');
+    const titleInput = document.createElement('input');
+    titleInput.type = 'text';
+    titleInput.classList.add('form-control', 'form-control-solid', 'ourstory-title-input');
+    titleInput.name = 'ourstory_title';
+    titleInput.placeholder = 'Title';
+    titleCell.appendChild(titleInput);
+    tr.appendChild(titleCell);
+
+    // Description column
+    const descriptionCell = document.createElement('td');
+    const descriptionInput = document.createElement('textarea');
+    descriptionInput.classList.add('form-control', 'form-control-solid', 'ourstory-description-input');
+    descriptionInput.name = 'ourstory_description';
+    descriptionInput.placeholder = 'Description';
+    descriptionCell.appendChild(descriptionInput);
+    tr.appendChild(descriptionCell);
+
+	// Action column
+	const actionCell = document.createElement('td');
+	const uploadButton = document.createElement('button');
+	const buttonId = 'ourstory-upload-button-' + Date.now(); // Generate unique ID
+	uploadButton.id = buttonId;
+	uploadButton.type = 'button';
+	uploadButton.classList.add('btn', 'btn-primary', 'ourstory-upload-button');
+	uploadButton.textContent = 'Upload';
+	actionCell.appendChild(uploadButton);
+	tr.appendChild(actionCell);
+
+    // Append the new row to the table body
+    tbody.appendChild(tr);
+}
+
+// Add initial row for uploading Our Story item
+addOurStoryRow();
+
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('ourstory-upload-button')) {
+        const row = event.target.closest('tr');
+        const imageInput = row.querySelector('.ourstory-file-input');
+        const titleInput = row.querySelector('.ourstory-title-input');
+        const descriptionInput = row.querySelector('.ourstory-description-input');
+
+        // Check if a file is selected
+        if (!imageInput.files || imageInput.files.length === 0) {
+            // Show error SweetAlert
+            Swal.fire('Error', 'Please select a file to upload.', 'error');
+            return; // Exit function early
+        }
+
+        const formData = new FormData();
+        formData.append('title', titleInput.value);
+        formData.append('description', descriptionInput.value);
+        formData.append('image', imageInput.files[0]);
+
+        fetch('/Dashboard/UploadOurStoryItem', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                // Item uploaded successfully
+                Swal.fire('Success', 'Our Story item uploaded successfully', 'success')
+                    .then(() => {
+                        // Optionally perform any further actions
+                        window.location.reload(); // Refresh page
+                    });
+            } else {
+                // Error handling
+                Swal.fire('Error', 'Error uploading Our Story item', 'error');
+            }
+        })
+        .catch(error => {
+            // Error handling
+            Swal.fire('Error', 'Error uploading Our Story item', 'error');
+        });
+    }
+});
+
+
+
+
+
+
+</script>
+

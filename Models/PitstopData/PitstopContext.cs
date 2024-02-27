@@ -31,8 +31,14 @@ public partial class PitstopContext : DbContext
     public virtual DbSet<UserSystemMapping> UserSystemMappings { get; set; }
     public virtual DbSet<UserRoles> UserRoles { get; set; }
     public virtual DbSet<UserToken> UserTokens { get; set; }
+    public virtual DbSet<Section1Media> Section1Media { get; set; }
+    public virtual DbSet<Section2Media> Section2Media { get; set; }
+    public virtual DbSet<Product> Product { get; set; }
+    public virtual DbSet<FeaturedItem> FeaturedItems { get; set; }
+    public virtual DbSet<ProductMedia> ProductMedia{ get; set; }
+    public virtual DbSet<OurStorys> OurStorys{ get; set; }
+    public virtual DbSet<Cart> Carts{ get; set; }
 
-    public virtual DbSet<Carousel2> Carousel2{ get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
 
@@ -183,18 +189,6 @@ public partial class PitstopContext : DbContext
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_UserIdUserToken");
-        });
-            modelBuilder.Entity<Carousel2>(entity =>
-        {
-            entity.ToTable("Carousel2");
-
-            entity.HasKey(e => e.Id);
-            entity.Property(e => e.Id).HasColumnName("Id").IsRequired().ValueGeneratedOnAdd();
-            entity.Property(e => e.Title).HasMaxLength(255).IsRequired();
-            entity.Property(e => e.ShortDescription).HasMaxLength(int.MaxValue);
-            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
-            entity.Property(e => e.Author).HasMaxLength(120);
-            entity.Property(e => e.FileName).HasMaxLength(255);
         });
         
         OnModelCreatingPartial(modelBuilder);

@@ -1,0 +1,85 @@
+﻿@model Pitstop.Models.UserSettingsModel
+@{
+    ViewData["Title"] = "Account Setting";
+    Layout = "/Views/Shared/_LayoutDash.cshtml";
+}
+
+<style>
+    input{
+        margin:10px;
+    }
+    .col-form-label{
+        margin-top:10px;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-custom">
+                <div class="card-header d-flex justify-content-center">
+                    <div class="card-title">
+                        <h3 class="card-label d-flex justify-content-center">Settings</h3>
+                    </div>
+                </div>
+                <form>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label class="col-lg-2 col-form-label text-lg-right">Current</label>
+                            <div class="col-lg-5">
+                                <input type="password" id="Current" name="Current" class="form-control" placeholder="Current..." />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-2 col-form-label text-lg-right">New Password</label>
+                            <div class="col-lg-5">
+                                <input type="password" id="NewPassword" name="NewPassword" class="form-control" placeholder="New Password..." />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-2 col-form-label text-lg-right">Confirm New Password</label>
+                            <div class="col-lg-5">
+                                <input type="password" id="ConfirmNewPassword" name="ConfirmNewPassword" class="form-control" placeholder="Confirm New Password..." />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-2 col-form-label text-lg-right"></label>
+                            <div class="col-lg-5">
+                                <input type="button" class="btn btn-primary mr-2" onclick="Submit('ChangePassword')" value="Change Password" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-custom">
+                <form>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label class="col-lg-2 col-form-label text-lg-right">Mobile Number</label>
+                            <div class="col-lg-5">
+                                <input type="text" asp-for="ChangeMobileNumber.MobileNumber" id="MobileNumber" name="MobileNumber" class="form-control" placeholder="Mobile Number..." />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-2 col-form-label text-lg-right"></label>
+                            <div class="col-lg-5">
+                                <input type="button" class="btn btn-info mr-2" onclick="Submit('ChangeMobileNumber')" value="Change Mobile Number" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts{
+<script src="~/js/user_settings.js"></script>
+}

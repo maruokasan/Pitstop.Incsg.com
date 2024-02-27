@@ -19,12 +19,41 @@
         <link rel="stylesheet" href="~/css/home.css">
     </head>
 
+    <style>
+        .featured__title{
+            font-size:25px;
+        }
+        .featured__price{
+            font-size:15px;
+        }
+         .featured__tag{
+            font-size:15px;
+            font-weight: bold;
+        }
+
+
+        /* Make the image fill the container while maintaining aspect ratio */
+        .story__img {
+            width: 100%;
+            height: 100%;
+            margin-left: 2px;
+            margin-top: 115px;
+            border-radius: 25px;
+            padding: 10px;
+        }
+
+        .story__data{
+            margin-left: 40px;
+        }
+
+    </style>
+
     <body>
         <!--==================== HEADER ====================-->
         <header class="header" id="header">
             <nav class="nav container">
-                <a href="#" class="nav__logo">
-                <img src="~/images/PSlogo.png" alt="PS" class="nav__logo-image" style="width:60px; height:60px; margin-right:5px; border-radius:5px;">
+                <a href="/Home/Index" class="nav__logo">
+                <img src="~/images/pstest.png" alt="PS" class="nav__logo-image" style="width:60px; height:60px; margin-right:5px; border-radius:5px;">
                 Pitstop.Incsg
             </a>
 
@@ -95,128 +124,38 @@
             </nav>
         </header>
 
-        @* <!--==================== CART ====================-->
-        <div class="cart" id="cart">
-            <i class='bx bx-x cart__close' id="cart-close"></i>
-
-            <h2 class="cart__title-center">My Cart</h2>
-
-            <div class="cart__container">
-                <article class="cart__card">
-                    <div class="cart__box">
-                        <img src="home/img/featured1.png" alt="" class="cart__img">
-                    </div>
-
-                    <div class="cart__details">
-                        <h3 class="cart__title">Jazzmaster</h3>
-                        <span class="cart__price">$1050</span>
-
-                        <div class="cart__amount">
-                            <div class="cart__amount-content">
-                                <span class="cart__amount-box">
-                                    <i class='bx bx-minus' ></i>
-                                </span>
-
-                                <span class="cart__amount-number">1</span>
-
-                                <span class="cart__amount-box">
-                                    <i class='bx bx-plus' ></i>
-                                </span>
-                            </div>
-
-                            <i class='bx bx-trash-alt cart__amount-trash' ></i>
-                        </div>
-                    </div>
-                </article>
-                
-                <article class="cart__card">
-                    <div class="cart__box">
-                        <img src="home/img/featured3.png" alt="" class="cart__img">
-                    </div>
-
-                    <div class="cart__details">
-                        <h3 class="cart__title">Rose Gold</h3>
-                        <span class="cart__price">$850</span>
-
-                        <div class="cart__amount">
-                            <div class="cart__amount-content">
-                                <span class="cart__amount-box">
-                                    <i class='bx bx-minus' ></i>
-                                </span>
-
-                                <span class="cart__amount-number">1</span>
-
-                                <span class="cart__amount-box">
-                                    <i class='bx bx-plus' ></i>
-                                </span>
-                            </div>
-
-                            <i class='bx bx-trash-alt cart__amount-trash' ></i>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="cart__card">
-                    <div class="cart__box">
-                        <img src="home/img/new1.png" alt="" class="cart__img">
-                    </div>
-
-                    <div class="cart__details">
-                        <h3 class="cart__title">Longines Rose</h3>
-                        <span class="cart__price">$980</span>
-
-                        <div class="cart__amount">
-                            <div class="cart__amount-content">
-                                <span class="cart__amount-box">
-                                    <i class='bx bx-minus' ></i>
-                                </span>
-
-                                <span class="cart__amount-number">1</span>
-
-                                <span class="cart__amount-box">
-                                    <i class='bx bx-plus' ></i>
-                                </span>
-                            </div>
-
-                            <i class='bx bx-trash-alt cart__amount-trash' ></i>
-                        </div>
-                    </div>
-                </article>
-            </div>
-
-            <div class="cart__prices">
-                <span class="cart__prices-item">3 items</span>
-                <span class="cart__prices-total">$2880</span>
-            </div>
-        </div> *@
-
         <!--==================== MAIN ====================-->
         <main class="main">
             <!--==================== HOME ====================-->
-    <section class="home" id="home">
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <!-- Slides -->
-                    <div class="swiper-slide">
-                        <img src="~/images/PSlogo.png" alt="Product 1" class="product-image">
+            <section class="home" id="home">
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        @foreach (var media in Model.Section1Medias)
+                        {
+                            <div class="swiper-slide">
+                                <img src="~/Section1Media/@media.FileName" alt="Product Image" class="product-image">
+                            </div>
+                        }
                     </div>
-</section>
+                </div>
+            </section>
 
             <section class="home-bottom" id="home">
                         <div class="highlight-container card">
                                 <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
                                 <ol class="carousel-indicators">
-                                    @for (int i = 0; i < Model.LatestCarousel2.Count; i++)
+                                    @for (int i = 0; i < Model.Section2Medias.Count; i++)
                                     {
                                         <li data-bs-target="#carouselExample" data-bs-slide-to="@i" class="@((i == 0) ? "active" : "")"></li>
                                     }
                                 </ol>
                                 <div class="carousel-inner">
-                                    @for (int i = 0; i < Model.LatestCarousel2.Count; i++)
+                                    @for (int i = 0; i < Model.Section2Medias.Count; i++)
                                     {
                                         <div class="carousel-item @(i == 0 ? "active" : "")">
                                             <div class="aspect-ratio-box">
-                                            <img class="c-img" src="@Url.Content(Model.LatestCarousel2[i].FileUploadUrl)" alt="Highlight Image" />
+                                            <img class="c-img" src="@Url.Content("~/Section2Media/" + Model.Section2Medias[i].FileName)" alt="Highlight Image" />
+
                                         </div>
                                     </div>
                                     }
@@ -239,48 +178,22 @@
             <!--==================== FEATURED ====================-->
             <section class="featured section container" id="featured">
                 <h2 class="section__title">
-                    Featured
+                    Featured Products
                 </h2>
 
                 <div class="featured__container grid">
-                    <article class="featured__card">
-                        <span class="featured__tag">Sale</span>
-
-                        <img src="home/img/featured1.png" alt="" class="featured__img">
-
-                        <div class="featured__data">
-                            <h3 class="featured__title">Jazzmaster</h3>
-                            <span class="featured__price">$1050</span>
-                        </div>
-
-                        <button class="button featured__button">ADD TO CART</button>
-                    </article>
-
-                    <article class="featured__card">
-                        <span class="featured__tag">Sale</span>
-
-                        <img src="home/img/featured2.png" alt="" class="featured__img">
-
-                        <div class="featured__data">
-                            <h3 class="featured__title">Ingersoll</h3>
-                            <span class="featured__price">$250</span>
-                        </div>
-
-                        <button class="button featured__button">ADD TO CART</button>
-                    </article>
-
-                    <article class="featured__card">
-                        <span class="featured__tag">Sale</span>
-
-                        <img src="home/img/featured3.png" alt="" class="featured__img">
-
-                        <div class="featured__data">
-                            <h3 class="featured__title">Rose gold</h3>
-                            <span class="featured__price">$890</span>
-                        </div>
-
-                        <button class="button featured__button">ADD TO CART</button>
-                    </article>
+                    @foreach (var item in Model.FeaturedItems)
+                    {
+                        <article class="featured__card">
+                            <span class="featured__tag" style="width: 60px;">Sale</span>
+                            <img src="@Url.Content("~/FeaturedItems/" + item.FileName)" alt="" class="featured__img">
+                            <div class="featured__data">
+                                <h3 class="featured__title">@item.Title</h3>
+                                <span class="featured__price">$@item.Price</span> <!-- Prepend dollar sign -->
+                            </div>
+                            <button class="button featured__button">ADD TO CART</button>
+                        </article>
+                    }
                 </div>
             </section>
 
@@ -288,92 +201,30 @@
             <section class="story section container">
                 <div class="story__container grid">
                     <div class="story__data">
-                        <h2 class="section__title story__section-title">
-                            Our Story
-                        </h2>
-    
-                        <h1 class="story__title">
-                            Inspirational Watch of <br> this year
-                        </h1>
-    
-                        <p class="story__description">
-                            The latest and modern watches of this year, is available in various 
-                            presentations in this store, discover them now.
-                        </p>
-    
-                        <a href="#" class="button button--small">Discover</a>
+                        <h2 class="section__title story__section-title">Our Story</h2>
+                        <h1 class="story__title" id="storyTitle"></h1>
+                        <p class="story__description" id="storyDescription"></p>
                     </div>
-
                     <div class="story__images">
-                        <img src="home/img/story.png" alt="" class="story__img">
+                        <!-- Add a container for the image to control its size -->
+                        <div class="image-container">
+                            <img src="" alt="" class="story__img" id="storyImagePreview">
+                        </div>
                         <div class="story__square"></div>
                     </div>
                 </div>
             </section>
 
             <!--==================== PRODUCTS ====================-->
-            <section class="products section container" id="products">
-                <h2 class="section__title">
-                    Products
-                </h2>
+            @* <section class="products section container" id="products">
+            <h2 class="section__title">
+                Products
+            </h2>
 
-                <div class="products__container grid">
-                    <article class="products__card">
-                        <img src="home/img/product1.png" alt="" class="products__img">
-
-                        <h3 class="products__title">Spirit rose</h3>
-                        <span class="products__price">$1500</span>
-
-                        <button class="products__button">
-                            <i class='bx bx-shopping-bag'></i>
-                        </button>
-                    </article>
-
-                    <article class="products__card">
-                        <img src="home/img/product2.png" alt="" class="products__img">
-
-                        <h3 class="products__title">Khaki pilot</h3>
-                        <span class="products__price">$1350</span>
-
-                        <button class="products__button">
-                            <i class='bx bx-shopping-bag'></i>
-                        </button>
-                    </article>
-
-                    <article class="products__card">
-                        <img src="home/img/product3.png" alt="" class="products__img">
-
-                        <h3 class="products__title">Jubilee black</h3>
-                        <span class="products__price">$870</span>
-
-                        <button class="products__button">
-                            <i class='bx bx-shopping-bag'></i>
-                        </button>
-                    </article>
-
-                    <article class="products__card">
-                        <img src="home/img/product4.png" alt="" class="products__img">
-
-                        <h3 class="products__title">Fosil me3</h3>
-                        <span class="products__price">$650</span>
-
-                        <button class="products__button">
-                            <i class='bx bx-shopping-bag'></i>
-                        </button>
-                    </article>
-
-                    <article class="products__card">
-                        <img src="home/img/product5.png" alt="" class="products__img">
-
-                        <h3 class="products__title">Duchen</h3>
-                        <span class="products__price">$950</span>
-
-                        <button class="products__button">
-                            <i class='bx bx-shopping-bag'></i>
-                        </button>
-                    </article>
-                </div>
-            </section>
+            <div class="products__container grid" id="products-container">
+                <!-- Product cards will be dynamically added here -->
+            </div>
+        </section> *@
 
             <!--==================== TESTIMONIAL ====================-->
             <section class="testimonial section container">
@@ -460,7 +311,7 @@
             </section>
 
             <!--==================== NEW ====================-->
-            <section class="new section container" id="new">
+            @* <section class="new section container" id="new">
                 <h2 class="section__title">
                     New Arrivals
                 </h2>
@@ -512,7 +363,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> *@
 
         </main>
     </body>

@@ -1,0 +1,446 @@
+
+	@{
+    Layout = "/Views/Shared/_LayoutDash.cshtml";
+    ViewBag.Title = "Sales";
+    ViewData["Title"] = "Sales";
+	}
+					<!--begin::Content-->
+					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+						<!--begin::Container-->
+						<div class="container-xxl" id="kt_content_container">
+							<!--begin::Products-->
+							<div class="card card-flush">
+								<!--begin::Card header-->
+								<div class="card-header align-items-center py-5 gap-2 gap-md-5">
+									<!--begin::Card title-->
+									<div class="card-title">
+										<!--begin::Search-->
+										<div class="d-flex align-items-center position-relative my-1">
+											<i class="ki-duotone ki-magnifier fs-3 position-absolute ms-4">
+												<span class="path1"></span>
+												<span class="path2"></span>
+											</i>
+											<input type="text" data-kt-ecommerce-order-filter="search" class="form-control form-control-solid w-250px ps-12" placeholder="Search Report" />
+										</div>
+										<!--end::Search-->
+										<!--begin::Export buttons-->
+										<div id="kt_ecommerce_report_sales_export" class="d-none"></div>
+										<!--end::Export buttons-->
+									</div>
+									<!--end::Card title-->
+									<!--begin::Card toolbar-->
+									<div class="card-toolbar flex-row-fluid justify-content-end gap-5">
+										<!--begin::Daterangepicker-->
+										<input class="form-control form-control-solid w-100 mw-250px" placeholder="Pick date range" id="kt_ecommerce_report_sales_daterangepicker" />
+										<!--end::Daterangepicker-->
+										<!--begin::Export dropdown-->
+										<button type="button" class="btn btn-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+										<i class="ki-duotone ki-exit-up fs-2">
+											<span class="path1"></span>
+											<span class="path2"></span>
+										</i>Export Report</button>
+										<!--begin::Menu-->
+										<div id="kt_ecommerce_report_sales_export_menu" class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-200px py-4" data-kt-menu="true">
+											<!--begin::Menu item-->
+											<div class="menu-item px-3">
+												<a href="#" class="menu-link px-3" data-kt-ecommerce-export="copy">Copy to clipboard</a>
+											</div>
+											<!--end::Menu item-->
+											<!--begin::Menu item-->
+											<div class="menu-item px-3">
+												<a href="#" class="menu-link px-3" data-kt-ecommerce-export="excel">Export as Excel</a>
+											</div>
+											<!--end::Menu item-->
+											<!--begin::Menu item-->
+											<div class="menu-item px-3">
+												<a href="#" class="menu-link px-3" data-kt-ecommerce-export="csv">Export as CSV</a>
+											</div>
+											<!--end::Menu item-->
+											<!--begin::Menu item-->
+											<div class="menu-item px-3">
+												<a href="#" class="menu-link px-3" data-kt-ecommerce-export="pdf">Export as PDF</a>
+											</div>
+											<!--end::Menu item-->
+										</div>
+										<!--end::Menu-->
+										<!--end::Export dropdown-->
+									</div>
+									<!--end::Card toolbar-->
+								</div>
+								<!--end::Card header-->
+								<!--begin::Card body-->
+								<div class="card-body pt-0">
+									<!--begin::Table-->
+									<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_report_sales_table">
+										<thead>
+											<tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+												<th class="min-w-100px">Date</th>
+												<th class="text-end min-w-75px">No. Orders</th>
+												<th class="text-end min-w-75px">Products Sold</th>
+												<th class="text-end min-w-75px">Tax</th>
+												<th class="text-end min-w-100px">Total</th>
+											</tr>
+										</thead>
+										<tbody class="fw-semibold text-gray-600">
+											<tr>
+												<td>Oct 25, 2023</td>
+												<td class="text-end pe-0">12</td>
+												<td class="text-end pe-0">16</td>
+												<td class="text-end pe-0">$30.00</td>
+												<td class="text-end">$203.00</td>
+											</tr>
+											<tr>
+												<td>Dec 20, 2023</td>
+												<td class="text-end pe-0">13</td>
+												<td class="text-end pe-0">17</td>
+												<td class="text-end pe-0">$55.00</td>
+												<td class="text-end">$366.00</td>
+											</tr>
+											<tr>
+												<td>May 05, 2023</td>
+												<td class="text-end pe-0">3</td>
+												<td class="text-end pe-0">5</td>
+												<td class="text-end pe-0">$82.00</td>
+												<td class="text-end">$546.00</td>
+											</tr>
+											<tr>
+												<td>Jul 25, 2023</td>
+												<td class="text-end pe-0">8</td>
+												<td class="text-end pe-0">11</td>
+												<td class="text-end pe-0">$89.00</td>
+												<td class="text-end">$592.00</td>
+											</tr>
+											<tr>
+												<td>Oct 25, 2023</td>
+												<td class="text-end pe-0">16</td>
+												<td class="text-end pe-0">21</td>
+												<td class="text-end pe-0">$35.00</td>
+												<td class="text-end">$231.00</td>
+											</tr>
+											<tr>
+												<td>May 05, 2023</td>
+												<td class="text-end pe-0">9</td>
+												<td class="text-end pe-0">12</td>
+												<td class="text-end pe-0">$70.00</td>
+												<td class="text-end">$468.00</td>
+											</tr>
+											<tr>
+												<td>Jun 20, 2023</td>
+												<td class="text-end pe-0">12</td>
+												<td class="text-end pe-0">16</td>
+												<td class="text-end pe-0">$51.00</td>
+												<td class="text-end">$343.00</td>
+											</tr>
+											<tr>
+												<td>Dec 20, 2023</td>
+												<td class="text-end pe-0">16</td>
+												<td class="text-end pe-0">18</td>
+												<td class="text-end pe-0">$11.00</td>
+												<td class="text-end">$75.00</td>
+											</tr>
+											<tr>
+												<td>Aug 19, 2023</td>
+												<td class="text-end pe-0">12</td>
+												<td class="text-end pe-0">14</td>
+												<td class="text-end pe-0">$3.00</td>
+												<td class="text-end">$21.00</td>
+											</tr>
+											<tr>
+												<td>Sep 22, 2023</td>
+												<td class="text-end pe-0">13</td>
+												<td class="text-end pe-0">16</td>
+												<td class="text-end pe-0">$10.00</td>
+												<td class="text-end">$65.00</td>
+											</tr>
+											<tr>
+												<td>Sep 22, 2023</td>
+												<td class="text-end pe-0">18</td>
+												<td class="text-end pe-0">20</td>
+												<td class="text-end pe-0">$64.00</td>
+												<td class="text-end">$424.00</td>
+											</tr>
+											<tr>
+												<td>Sep 22, 2023</td>
+												<td class="text-end pe-0">1</td>
+												<td class="text-end pe-0">4</td>
+												<td class="text-end pe-0">$35.00</td>
+												<td class="text-end">$230.00</td>
+											</tr>
+											<tr>
+												<td>Oct 25, 2023</td>
+												<td class="text-end pe-0">15</td>
+												<td class="text-end pe-0">20</td>
+												<td class="text-end pe-0">$78.00</td>
+												<td class="text-end">$523.00</td>
+											</tr>
+											<tr>
+												<td>Sep 22, 2023</td>
+												<td class="text-end pe-0">17</td>
+												<td class="text-end pe-0">21</td>
+												<td class="text-end pe-0">$5.00</td>
+												<td class="text-end">$34.00</td>
+											</tr>
+											<tr>
+												<td>Dec 20, 2023</td>
+												<td class="text-end pe-0">9</td>
+												<td class="text-end pe-0">14</td>
+												<td class="text-end pe-0">$56.00</td>
+												<td class="text-end">$376.00</td>
+											</tr>
+											<tr>
+												<td>Jun 24, 2023</td>
+												<td class="text-end pe-0">15</td>
+												<td class="text-end pe-0">17</td>
+												<td class="text-end pe-0">$74.00</td>
+												<td class="text-end">$494.00</td>
+											</tr>
+											<tr>
+												<td>Oct 25, 2023</td>
+												<td class="text-end pe-0">9</td>
+												<td class="text-end pe-0">13</td>
+												<td class="text-end pe-0">$59.00</td>
+												<td class="text-end">$396.00</td>
+											</tr>
+											<tr>
+												<td>Dec 20, 2023</td>
+												<td class="text-end pe-0">11</td>
+												<td class="text-end pe-0">16</td>
+												<td class="text-end pe-0">$78.00</td>
+												<td class="text-end">$522.00</td>
+											</tr>
+											<tr>
+												<td>Nov 10, 2023</td>
+												<td class="text-end pe-0">9</td>
+												<td class="text-end pe-0">14</td>
+												<td class="text-end pe-0">$68.00</td>
+												<td class="text-end">$456.00</td>
+											</tr>
+											<tr>
+												<td>Jun 24, 2023</td>
+												<td class="text-end pe-0">11</td>
+												<td class="text-end pe-0">13</td>
+												<td class="text-end pe-0">$12.00</td>
+												<td class="text-end">$78.00</td>
+											</tr>
+											<tr>
+												<td>Feb 21, 2023</td>
+												<td class="text-end pe-0">14</td>
+												<td class="text-end pe-0">18</td>
+												<td class="text-end pe-0">$28.00</td>
+												<td class="text-end">$188.00</td>
+											</tr>
+											<tr>
+												<td>Apr 15, 2023</td>
+												<td class="text-end pe-0">15</td>
+												<td class="text-end pe-0">19</td>
+												<td class="text-end pe-0">$6.00</td>
+												<td class="text-end">$43.00</td>
+											</tr>
+											<tr>
+												<td>Jun 24, 2023</td>
+												<td class="text-end pe-0">5</td>
+												<td class="text-end pe-0">7</td>
+												<td class="text-end pe-0">$82.00</td>
+												<td class="text-end">$549.00</td>
+											</tr>
+											<tr>
+												<td>Jun 20, 2023</td>
+												<td class="text-end pe-0">1</td>
+												<td class="text-end pe-0">3</td>
+												<td class="text-end pe-0">$54.00</td>
+												<td class="text-end">$359.00</td>
+											</tr>
+											<tr>
+												<td>Apr 15, 2023</td>
+												<td class="text-end pe-0">3</td>
+												<td class="text-end pe-0">6</td>
+												<td class="text-end pe-0">$19.00</td>
+												<td class="text-end">$128.00</td>
+											</tr>
+											<tr>
+												<td>Feb 21, 2023</td>
+												<td class="text-end pe-0">20</td>
+												<td class="text-end pe-0">25</td>
+												<td class="text-end pe-0">$75.00</td>
+												<td class="text-end">$503.00</td>
+											</tr>
+											<tr>
+												<td>Aug 19, 2023</td>
+												<td class="text-end pe-0">1</td>
+												<td class="text-end pe-0">5</td>
+												<td class="text-end pe-0">$66.00</td>
+												<td class="text-end">$437.00</td>
+											</tr>
+											<tr>
+												<td>Nov 10, 2023</td>
+												<td class="text-end pe-0">19</td>
+												<td class="text-end pe-0">23</td>
+												<td class="text-end pe-0">$29.00</td>
+												<td class="text-end">$195.00</td>
+											</tr>
+											<tr>
+												<td>Apr 15, 2023</td>
+												<td class="text-end pe-0">3</td>
+												<td class="text-end pe-0">5</td>
+												<td class="text-end pe-0">$22.00</td>
+												<td class="text-end">$147.00</td>
+											</tr>
+											<tr>
+												<td>May 05, 2023</td>
+												<td class="text-end pe-0">5</td>
+												<td class="text-end pe-0">8</td>
+												<td class="text-end pe-0">$79.00</td>
+												<td class="text-end">$529.00</td>
+											</tr>
+											<tr>
+												<td>Dec 20, 2023</td>
+												<td class="text-end pe-0">17</td>
+												<td class="text-end pe-0">22</td>
+												<td class="text-end pe-0">$70.00</td>
+												<td class="text-end">$467.00</td>
+											</tr>
+											<tr>
+												<td>May 05, 2023</td>
+												<td class="text-end pe-0">3</td>
+												<td class="text-end pe-0">6</td>
+												<td class="text-end pe-0">$56.00</td>
+												<td class="text-end">$374.00</td>
+											</tr>
+											<tr>
+												<td>Oct 25, 2023</td>
+												<td class="text-end pe-0">4</td>
+												<td class="text-end pe-0">7</td>
+												<td class="text-end pe-0">$39.00</td>
+												<td class="text-end">$257.00</td>
+											</tr>
+											<tr>
+												<td>Mar 10, 2023</td>
+												<td class="text-end pe-0">10</td>
+												<td class="text-end pe-0">15</td>
+												<td class="text-end pe-0">$15.00</td>
+												<td class="text-end">$97.00</td>
+											</tr>
+											<tr>
+												<td>Jun 20, 2023</td>
+												<td class="text-end pe-0">15</td>
+												<td class="text-end pe-0">19</td>
+												<td class="text-end pe-0">$78.00</td>
+												<td class="text-end">$517.00</td>
+											</tr>
+											<tr>
+												<td>Mar 10, 2023</td>
+												<td class="text-end pe-0">7</td>
+												<td class="text-end pe-0">10</td>
+												<td class="text-end pe-0">$89.00</td>
+												<td class="text-end">$596.00</td>
+											</tr>
+											<tr>
+												<td>Apr 15, 2023</td>
+												<td class="text-end pe-0">15</td>
+												<td class="text-end pe-0">20</td>
+												<td class="text-end pe-0">$74.00</td>
+												<td class="text-end">$491.00</td>
+											</tr>
+											<tr>
+												<td>Feb 21, 2023</td>
+												<td class="text-end pe-0">7</td>
+												<td class="text-end pe-0">9</td>
+												<td class="text-end pe-0">$9.00</td>
+												<td class="text-end">$62.00</td>
+											</tr>
+											<tr>
+												<td>Dec 20, 2023</td>
+												<td class="text-end pe-0">11</td>
+												<td class="text-end pe-0">15</td>
+												<td class="text-end pe-0">$61.00</td>
+												<td class="text-end">$407.00</td>
+											</tr>
+											<tr>
+												<td>Feb 21, 2023</td>
+												<td class="text-end pe-0">8</td>
+												<td class="text-end pe-0">13</td>
+												<td class="text-end pe-0">$71.00</td>
+												<td class="text-end">$474.00</td>
+											</tr>
+											<tr>
+												<td>Feb 21, 2023</td>
+												<td class="text-end pe-0">11</td>
+												<td class="text-end pe-0">14</td>
+												<td class="text-end pe-0">$84.00</td>
+												<td class="text-end">$559.00</td>
+											</tr>
+											<tr>
+												<td>May 05, 2023</td>
+												<td class="text-end pe-0">10</td>
+												<td class="text-end pe-0">13</td>
+												<td class="text-end pe-0">$58.00</td>
+												<td class="text-end">$386.00</td>
+											</tr>
+											<tr>
+												<td>Apr 15, 2023</td>
+												<td class="text-end pe-0">5</td>
+												<td class="text-end pe-0">7</td>
+												<td class="text-end pe-0">$8.00</td>
+												<td class="text-end">$52.00</td>
+											</tr>
+											<tr>
+												<td>Jul 25, 2023</td>
+												<td class="text-end pe-0">17</td>
+												<td class="text-end pe-0">20</td>
+												<td class="text-end pe-0">$69.00</td>
+												<td class="text-end">$463.00</td>
+											</tr>
+											<tr>
+												<td>Sep 22, 2023</td>
+												<td class="text-end pe-0">16</td>
+												<td class="text-end pe-0">18</td>
+												<td class="text-end pe-0">$72.00</td>
+												<td class="text-end">$482.00</td>
+											</tr>
+											<tr>
+												<td>May 05, 2023</td>
+												<td class="text-end pe-0">1</td>
+												<td class="text-end pe-0">6</td>
+												<td class="text-end pe-0">$15.00</td>
+												<td class="text-end">$102.00</td>
+											</tr>
+											<tr>
+												<td>Sep 22, 2023</td>
+												<td class="text-end pe-0">6</td>
+												<td class="text-end pe-0">10</td>
+												<td class="text-end pe-0">$80.00</td>
+												<td class="text-end">$533.00</td>
+											</tr>
+											<tr>
+												<td>May 05, 2023</td>
+												<td class="text-end pe-0">11</td>
+												<td class="text-end pe-0">16</td>
+												<td class="text-end pe-0">$4.00</td>
+												<td class="text-end">$27.00</td>
+											</tr>
+											<tr>
+												<td>Jul 25, 2023</td>
+												<td class="text-end pe-0">15</td>
+												<td class="text-end pe-0">20</td>
+												<td class="text-end pe-0">$84.00</td>
+												<td class="text-end">$562.00</td>
+											</tr>
+											<tr>
+												<td>Dec 20, 2023</td>
+												<td class="text-end pe-0">13</td>
+												<td class="text-end pe-0">18</td>
+												<td class="text-end pe-0">$83.00</td>
+												<td class="text-end">$551.00</td>
+											</tr>
+										</tbody>
+									</table>
+									<!--end::Table-->
+								</div>
+								<!--end::Card body-->
+							</div>
+							<!--end::Products-->
+						</div>
+						<!--end::Container-->
+					</div>
+					<!--end::Content-->
+					

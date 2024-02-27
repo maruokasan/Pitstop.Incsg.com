@@ -210,12 +210,110 @@ namespace Pitstop.Service
             return list;
         }
 
-               public List<Carousel2> GetLatestCarousel2()
+        public List<Section1Media> GetSection1Media()
         {
-            return _PitstopContext.Carousel2
-                .OrderByDescending(h => h.CreatedAt)
-                .Take(3)
-                .ToList();
+            try
+            {
+                // Fetch the Section1Media items sorted by UploadDate in descending order
+                return _PitstopContext.Section1Media
+                    .OrderByDescending(m => m.UploadDate)
+                    .Select(m => new Section1Media
+                    {
+                        Id = m.Id,
+                        FileName = m.FileName,
+                        FileType = m.FileType,
+                        UploadDate = m.UploadDate
+                    })
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception as needed
+                throw ex;
+            }
         }
-    }
+
+        public List<Section2Media> GetSection2Media()
+        {
+            // Implement logic to retrieve Section 2 media from the database
+            return _PitstopContext.Section2Media.OrderBy(m => m.CarouselNumber).ToList();
+        }
+        public int GetNextCarouselNumber()
+        {
+            // Find the maximum carousel number and increment it to get the next available carousel number
+            int maxCarouselNumber = _PitstopContext.Section2Media.Max(s => (int?)s.CarouselNumber) ?? 0;
+            return maxCarouselNumber + 1;
+        }
+
+        public void DeleteCarouselEntries(int carouselNumber)
+        {
+            // Delete old entries for the specific carousel number
+            var oldEntries = _PitstopContext.Section2Media.Where(s => s.CarouselNumber == carouselNumber);
+            _PitstopContext.Section2Media.RemoveRange(oldEntries);
+            _PitstopContext.SaveChanges();
+        }
+
+        public void SaveCarouselImageVideo(int carouselNumber, string fileName)
+        {
+            // Create a new Section2Media entry with the specified carousel number and file name
+            var newEntry = new Section2Media
+            {
+                CarouselNumber = carouselNumber,
+                FileName = fileName,
+                UploadDate = DateTime.Now // You can set the upload date here
+            };
+
+            _PitstopContext.Section2Media.Add(newEntry);
+            _PitstopContext.SaveChanges();
+        }
+
+        public string GetLatestFeaturedItemId()
+        {
+            // Query the FeaturedItem table to get the latest Id
+            var latestItem = _PitstopContext.FeaturedItems.OrderByDescending(item => item.Id).FirstOrDefault();
+
+            // If there are no items in the table, return a default value
+            if (latestItem == null)
+            {
+                return "0"; // Or any other default value you prefer
+            }
+
+            return latestItem.Id;
+        }
+
+        public void DeleteAllFeaturedItems()
+        {
+            var featuredItems = _PitstopContext.FeaturedItems.ToList();
+            _PitstopContext.FeaturedItems.RemoveRange(featuredItems);
+            _PitstopContext.SaveChanges();
+        }
+
+        public List<FeaturedItem> GetFeaturedItems()
+        {
+            return _PitstopContext.FeaturedItems.ToList();
+        }
+        public List<ProductMedia> GetProductMedia()
+        {
+            return _PitstopContext.ProductMedia.ToList();
+        }
+        public List<OurStorys> GetOurStory()
+        {
+            try
+            {
+                // Retrieve the latest OurStory item based on the UpdatedAt property
+                var latestStory = _PitstopContext.OurStorys
+                    .OrderByDescending(s => s.UpdatedAt)
+                    .Take(1) // Take only the latest story
+                    .ToList(); // Convert to a list
+
+                return latestStory;
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception as needed
+                throw ex;
+            }
+        }
+
+    }   
 }

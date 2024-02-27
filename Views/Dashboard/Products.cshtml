@@ -1,0 +1,124 @@
+	@{
+    Layout = "/Views/Shared/_LayoutDash.cshtml";
+    ViewBag.Title = "Products";
+    ViewData["Title"] = "Products";
+	}
+
+					<!--begin::Content-->
+					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+						<!--begin::Container-->
+						<div class="container-xxl" id="kt_content_container">
+							<!--begin::Products-->
+							<div class="card card-flush">
+								<!--begin::Card header-->
+								<div class="card-header align-items-center py-5 gap-2 gap-md-5">
+									<!--begin::Card title-->
+									<div class="card-title">
+										<!--begin::Search-->
+										<div class="d-flex align-items-center position-relative my-1">
+											<i class="ki-duotone ki-magnifier fs-3 position-absolute ms-4">
+												<span class="path1"></span>
+												<span class="path2"></span>
+											</i>
+											<input type="text" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-12" placeholder="Search Product" />
+										</div>
+										<!--end::Search-->
+									</div>
+									<!--end::Card title-->
+									<!--begin::Card toolbar-->
+									<div class="card-toolbar flex-row-fluid justify-content-end gap-5">
+										<div class="w-100 mw-150px">
+											<!--begin::Select2-->
+											<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Status" data-kt-ecommerce-product-filter="status">
+												<option></option>
+												<option value="all">All</option>
+												<option value="published">Published</option>
+												<option value="scheduled">Scheduled</option>
+												<option value="inactive">Inactive</option>
+											</select>
+											<!--end::Select2-->
+										</div>
+										<!--begin::Add product-->
+										<a href="/Dashboard/Addproduct" class="btn btn-primary">Add Product</a>
+										<!--end::Add product-->
+									</div>
+									<!--end::Card toolbar-->
+								</div>
+								<!--end::Card header-->
+								<!--begin::Card body-->
+								<div class="card-body pt-0">
+									<!--begin::Table-->
+									<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_products_table">
+										<thead>
+											<tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+												<th class="w-10px pe-2">
+													<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+														<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_ecommerce_products_table .form-check-input" value="1" />
+													</div>
+												</th>
+												<th class="min-w-200px">Product</th>
+												<th class="text-end min-w-100px">SKU</th>
+												<th class="text-end min-w-70px">Qty</th>
+												<th class="text-end min-w-100px">Price</th>
+												<th class="text-end min-w-100px">Status</th>
+												<th class="text-end min-w-70px">Actions</th>
+											</tr>
+										</thead>
+										<tbody class="fw-semibold text-gray-600">
+
+										</tbody>
+									</table>
+									<!--end::Table-->
+								</div>
+								<!--end::Card body-->
+							</div>
+							<!--end::Products-->
+						</div>
+						<!--end::Container-->
+					</div>
+					<!--end::Content-->
+
+<script>
+$(document).ready(function () {
+    function initializeDataTable() {
+        $('#kt_ecommerce_products_table').DataTable();
+    }
+
+    function fetchDataFromServer() {
+        $.ajax({
+            url: '/Dashboard/GetDataProduct',
+            type: 'POST',
+            dataType: 'json',
+            success: function (response) {
+                // Check if data is not empty
+                if (response && response.data && response.data.length > 0) {
+                    // Extract and format required fields
+                    var formattedData = response.data.map(function(item) {
+                        return {
+							id: item.id,
+                            name: item.name,
+                            sku: item.sku,
+                            qty: item.qty,
+                            price: item.price,
+                            status: item.status,
+							category: item.category
+                        };
+                    });
+                    // Populate DataTable with formatted data
+                    $('#kt_ecommerce_products_table').DataTable().clear().rows.add(formattedData).draw();
+                } else {
+                    console.log('No data returned from the server.');
+                }
+            },
+            error: function (xhr, errorText, errorType) {
+                console.log('AJAX Error: ' + errorText + ' (' + errorType + ')');
+            }
+        });
+    }
+
+    initializeDataTable();
+    fetchDataFromServer();
+});
+
+</script>
+					

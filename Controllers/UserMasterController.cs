@@ -44,103 +44,8 @@ namespace Pitstop.Controllers
             _options = options.Value;
         }
 
-        //Index -> Dashboard//
-        public IActionResult Index()
-        {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            var userSystemMappings = _PitstopContext.UserSystemMappings.Where(e => e.UserId == userId).ToList();
-
-            var dataSystemMenuList = new List<SystemMenuModel>();
-
-            if (userSystemMappings != null || userSystemMappings.Count != 0)
-            {
-                var menuList = _PitstopContext.Systems.Where(e => e.IsActive && !e.Name.Contains("SSP") &&
-                userSystemMappings.Select(a => a.SystemId).Contains(e.Id)).OrderBy(e => e.Name).ToList();
-
-                foreach (var item in menuList)
-                {
-                    var menu = new SystemMenuModel
-                    {
-                        Id = item.Id,
-                        Name = item.Name,
-                        CssBackground = item.CssbackgroundColor,
-                        LogoPath = item.LogoPath,
-                        Url = item.Url
-                    };
-
-                    dataSystemMenuList.Add(menu);
-                }
-            }
-
-            return View(dataSystemMenuList);
-        }
-        private const string Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==";
-        public IActionResult CreateToken()
-        {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var user = _PitstopContext.Users.Find(userId);
-
-            if (user == null)
-            {
-                return BadRequest(new ResponseViewModel<object>
-                {
-                    Message = "This user does not exists."
-                });
-            }
-
-            int expireMinutes = 20;
-            var symmetricKey = Convert.FromBase64String(Secret);
-            var tokenHandler = new JwtSecurityTokenHandler();
-
-            var now = DateTime.UtcNow;
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new[]
-                {
-                    new Claim(ClaimTypes.Name, user.Email)
-                }),
-
-                Expires = now.AddMinutes(Convert.ToInt32(expireMinutes)),
-
-                SigningCredentials = new SigningCredentials(
-                    new SymmetricSecurityKey(symmetricKey),
-                    SecurityAlgorithms.HmacSha256Signature)
-            };
-
-            var stoken = tokenHandler.CreateToken(tokenDescriptor);
-            var token = tokenHandler.WriteToken(stoken);
-
-            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            var random = new Random();
-            var randomString = new string(Enumerable.Repeat(chars, 10).Select(s => s[random.Next(s.Length)]).ToArray());
-            if (user != null)
-            {
-                //user.SendActivationToken = token;
-                //user.SendActivationDate = DateTime.Now;
-                //_webPortalContext.SaveChanges();
-
-                var userToken = new UserToken()
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    UserId = user.Id,
-                    LoginProvider = "Generate Token",
-                    Name = randomString,
-                    Value = token,
-                    CreatedDate = DateTime.Now
-                };
-                _PitstopContext.UserTokens.Add(userToken);
-                _PitstopContext.SaveChanges();
-            }
-
-            return Json(randomString);
-        }
-        //End Index//
-
-        //UserMaster//
-
         // [Authorize(ClaimType = AppConstant.RoleClaim.ClaimType.SSP, ClaimValue = AppConstant.RoleClaim.ClaimValue.CreateEditAccounts)]
-        public IActionResult UserMaster()
+        public IActionResult Index()
         {
             ViewBag.Applications = _PitstopContext.Systems.ToList();
             ViewBag.StatusList = _commonService.GetStatusList();
@@ -149,7 +54,22 @@ namespace Pitstop.Controllers
             return View();
         }
 
-        public IActionResult Users()
+        public IActionResult UserView()
+        {
+            return View();
+        }
+
+        public IActionResult Permissions()
+        {
+            return View();
+        }
+
+        public IActionResult Rolelist()
+        {
+            return View();
+        }
+
+        public IActionResult Roleview()
         {
             return View();
         }
@@ -182,12 +102,11 @@ namespace Pitstop.Controllers
         {
             return View();
         }
-       public async Task<IActionResult> CreateUpdateUser(CreateUpdateUserMasterDataModel param, string SubmitType, string jobcodeTypeValues, string accessTypeValues)
+       public async Task<IActionResult> CreateUpdateUser(CreateUpdateUserMasterDataModel param, string SubmitType, string accessTypeValues)
         {
             try
             {
                 var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                var jobcodeType = jobcodeTypeValues != null ? jobcodeTypeValues.Split(",") : null;
                 var accessType = accessTypeValues != null ? accessTypeValues.Split(",") : null;
 
                 if (SubmitType == AppConstant.SubmitCreateUpdateUsers.Save && string.IsNullOrEmpty(param.UserId))
