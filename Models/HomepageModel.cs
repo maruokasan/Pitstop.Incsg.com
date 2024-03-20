@@ -11,5 +11,7 @@
         public List<FeaturedItem> FeaturedItems { get; set; }
         public List<ProductMedia> ProductMedias { get; set; }
         public List<OurStorys> OurStorys { get; set; }
+        public List<Testimonial> Testimonial{ get; set; }
+        public List<Cart> Cart{ get; set; }
     }
 }

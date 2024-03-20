@@ -264,42 +264,23 @@
 												<table class="table table-bordered">
 													<thead>
 														<tr>
-															<th>Order</th>
 															<th>Upload File</th>
 															<th>Action</th>
 														</tr>
 													</thead>
 													<tbody>
-														<!-- Section 2: Upload Multiple Images - Order 1 -->
+														<!-- Section 2: Upload Multiple Images -->
 														<tr class="fv-row mb-7 mt-7 align-items-center">
-															<td>1</td>
 															<td>
-																<input type="file" class="form-control form-control-solid section2-file-input" name="section2_media_order1[]" accept="image/*,video/*" />
+																<input type="file" class="form-control form-control-solid section2-file-input" name="section2_media" accept="image/*,video/*" />
 															</td>
-															<td><button type="button" class="btn btn-primary section2-upload-button" data-order="1">Upload</button></td>
-														</tr>
-														<!-- Section 2: Upload Multiple Images - Order 2 -->
-														<tr class="fv-row mb-7">
-															<td>2</td>
-															<td>
-																<input type="file" class="form-control form-control-solid section2-file-input" name="section2_media_order2[]" accept="image/*,video/*" />
-															</td>
-															<td><button type="button" class="btn btn-primary section2-upload-button" data-order="2">Upload</button></td>
-														</tr>
-														<!-- Section 2: Upload Multiple Images - Order 3 -->
-														<tr class="fv-row mb-7">
-															<td>3</td>
-															<td>
-																<input type="file" class="form-control form-control-solid section2-file-input" name="section2_media_order3[]" accept="image/*,video/*" />
-															</td>
-															<td><button type="button" class="btn btn-primary section2-upload-button" data-order="3">Upload</button></td>
+															<td><button type="button" class="btn btn-primary section2-upload-button">Upload</button></td>
 														</tr>
 													</tbody>
 												</table>
 											</div>
 										</div>
 
-										<!-- Featured Items: Upload Image/Video -->
 										<div class="card mb-4">
 											<div class="card-header">
 												<h3 class="card-title">Featured Items</h3>
@@ -310,48 +291,28 @@
 													<thead>
 														<tr>
 															<th>Order</th>
-															<th>Upload File</th>
-															<th>Title</th>
-															<th>Price</th>
+															<th>Product Selection</th>
 															<th>Action</th>
 														</tr>
 													</thead>
 													<tbody>
-														<!-- Featured Item Upload - Order 1 -->
+													@for (int i = 1; i <= 6; i++)
+													{
 														<tr class="fv-row mb-7 mt-7 align-items-center">
-															<td>1</td>
+															<td>@i</td>
 															<td>
-																<input type="file" class="form-control form-control-solid featured-file-input" name="featured_media_order1[]" accept="image/*,video/*" />
-																<label class="file-label" for="featured_media_order1[]" id="featured-file-label-1">No file chosen</label> <!-- Label to display filename -->
+																<select class="form-select featured-product-select" data-order="@i" name="featured_product_order@i">
+																	<option value="">Select a product...</option>
+																	@foreach (var product in ViewBag.Products)
+																	{
+																		var isSelected = ViewBag.SelectedFeaturedItems.ContainsKey(i.ToString()) && ViewBag.SelectedFeaturedItems[i.ToString()] == product.Value;
+																		<option value="@product.Value" selected="@isSelected">@product.Text</option>
+																	}
+																</select>
 															</td>
-															<td><input type="text" class="form-control form-control-solid featured-title-input" name="featured_title_order1" placeholder="Title" /></td>
-															<td><input type="text" class="form-control form-control-solid featured-price-input" name="featured_price_order1" placeholder="Price" /></td>
-															<td><button type="button" class="btn btn-primary featured-upload-button" data-order="1">Upload</button></td>
+															<td><button type="button" class="btn btn-primary featured-select-button" data-order="@i">Select</button></td>
 														</tr>
-
-														<!-- Featured Item Upload - Order 2 -->
-														<tr class="fv-row mb-7">
-															<td>2</td>
-															<td>
-																<input type="file" class="form-control form-control-solid featured-file-input" name="featured_media_order2[]" accept="image/*,video/*" />
-																<label class="file-label" for="featured_media_order2[]" id="featured-file-label-2">No file chosen</label> <!-- Label to display filename -->
-															</td>
-															<td><input type="text" class="form-control form-control-solid featured-title-input" name="featured_title_order2" placeholder="Title" /></td>
-															<td><input type="text" class="form-control form-control-solid featured-price-input" name="featured_price_order2" placeholder="Price" /></td>
-															<td><button type="button" class="btn btn-primary featured-upload-button" data-order="2">Upload</button></td>
-														</tr>
-
-														<!-- Featured Item Upload - Order 3 -->
-														<tr class="fv-row mb-7">
-															<td>3</td>
-															<td>
-																<input type="file" class="form-control form-control-solid featured-file-input" name="featured_media_order3[]" accept="image/*,video/*" />
-																<label class="file-label" for="featured_media_order3[]" id="featured-file-label-3">No file chosen</label> <!-- Label to display filename -->
-															</td>
-															<td><input type="text" class="form-control form-control-solid featured-title-input" name="featured_title_order3" placeholder="Title" /></td>
-															<td><input type="text" class="form-control form-control-solid featured-price-input" name="featured_price_order3" placeholder="Price" /></td>
-															<td><button type="button" class="btn btn-primary featured-upload-button" data-order="3">Upload</button></td>
-														</tr>
+													}
 													</tbody>
 												</table>
 											</div>
@@ -379,6 +340,46 @@
 												</table>
 											</div>
 										</div>
+
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h3 class="card-title">Testimonial Management</h3>
+    </div>
+    <div class="overflow-auto" style="padding: 20px;">
+        <!-- Testimonial Management Form -->
+        <form id="testimonial-form">
+            <div class="mb-3">
+                <label for="testimonial-image" class="form-label">Upload Image</label>
+                <input type="file" class="form-control" id="testimonial-image" name="testimonial-image" accept="image/*">
+            </div>
+            <div class="mb-3">
+                <label for="testimonial-title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="testimonial-title" name="testimonial-title">
+            </div>
+            <div class="mb-3">
+                <label for="testimonial-description" class="form-label">Description</label>
+                <textarea class="form-control" id="testimonial-description" name="testimonial-description" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Testimonial</button>
+        </form>
+
+        <!-- Testimonial Table -->
+        <table id="testimonial-table" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Testimonials will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+</div>
 
 
 											</form>
@@ -482,28 +483,29 @@ fetch('/Dashboard/GetCarousel1Data')
 // Section 2 Upload Button Click Event
 document.querySelectorAll('.section2-upload-button').forEach(button => {
     button.addEventListener('click', function () {
-        const order = this.getAttribute('data-order');
-        const fileInput = document.querySelector(`input[name="section2_media_order${order}[]"]`);
+        const fileInput = document.querySelector('input[name="section2_media"]');
         
         if (fileInput && fileInput.files && fileInput.files.length > 0) {
             const formData = new FormData();
-            formData.append('order', order); // Make sure to use 'order' instead of 'carouselNumber'
             formData.append('imageFile', fileInput.files[0]);
 
-            fetch('/Dashboard/Carousel2Upload', { // Adjust the URL according to your route
+            fetch('/Dashboard/Carousel2Upload', {
                 method: 'POST',
                 body: formData,
             })
             .then(response => {
                 if (response.ok) {
-                    Swal.fire('Success', 'File uploaded successfully', 'success');
-					window.location.reload(); 
+                    return response.json(); // Parse the response body as JSON
                 } else {
-                    Swal.fire('Error', 'File upload failed', 'error');
+                    throw new Error('File upload failed');
                 }
             })
+            .then(data => {
+                Swal.fire('Success', 'File uploaded successfully', 'success');
+                window.location.reload(); 
+            })
             .catch(error => {
-                Swal.fire('Error', 'File upload failed', 'error');
+                Swal.fire('Error', error.message, 'error');
             });
         } else {
             Swal.fire('Error', 'No file selected for upload.', 'error');
@@ -517,12 +519,14 @@ document.querySelectorAll('.featured-upload-button').forEach(button => {
         const order = this.getAttribute('data-order');
         const fileInput = document.querySelector(`input[name="featured_media_order${order}[]"]`);
         const titleInput = document.querySelector(`input[name="featured_title_order${order}"]`);
+        const descriptionInput = document.querySelector(`textarea[name="featured_description_order${order}"]`); // Add this line
         const priceInput = document.querySelector(`input[name="featured_price_order${order}"]`);
         
         if (fileInput && fileInput.files && fileInput.files.length > 0) {
             const formData = new FormData();
             formData.append('imageFile', fileInput.files[0]);
             formData.append('title', titleInput.value);
+            formData.append('description', descriptionInput.value); // Add this line
             formData.append('price', priceInput.value);
             formData.append('order', order);
 
@@ -550,6 +554,7 @@ document.querySelectorAll('.featured-upload-button').forEach(button => {
         }
     });
 });
+
 
 // Fetch existing featured items data
 fetch('/Dashboard/GetFeaturedItems')
@@ -714,9 +719,51 @@ document.addEventListener('click', function(event) {
 });
 
 
+$(document).on('click', '.featured-select-button', function() {
+    var order = $(this).data('order');
+    var id = $('.featured-product-select[data-order="' + order + '"]').val();
+    var productName = $('.featured-product-select[data-order="' + order + '"] option:selected').text();
 
+    // Assuming you have an endpoint to save the featured product selection
+    $.ajax({
+        url: '/Dashboard/SaveFeaturedSelection',
+        type: 'POST',
+        data: {
+            order: order,
+            id: id
+        },
+        success: function(response) {
+            // Show SweetAlert success message
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Featured product updated successfully!'
+            });
+
+            // Update the selected option text to display the product name
+            $('.featured-product-select[data-order="' + order + '"] option:selected').text(productName);
+
+            // Example: disable the select button to indicate success
+            $('button[data-order="' + order + '"]').prop('disabled', true);
+
+            // Wait for 3 seconds and then refresh the page
+            setTimeout(function() {
+                window.location.reload();
+            }, 3000);
+        },
+        error: function(error) {
+            // Show SweetAlert error message
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error updating featured product.'
+            });
+        }
+    });
+});
 
 
 
 </script>
+
 

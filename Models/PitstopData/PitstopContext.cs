@@ -38,6 +38,8 @@ public partial class PitstopContext : DbContext
     public virtual DbSet<ProductMedia> ProductMedia{ get; set; }
     public virtual DbSet<OurStorys> OurStorys{ get; set; }
     public virtual DbSet<Cart> Carts{ get; set; }
+    public virtual DbSet<Testimonial> Testimonial { get; set; }
+    public virtual DbSet<Category> Category{ get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }

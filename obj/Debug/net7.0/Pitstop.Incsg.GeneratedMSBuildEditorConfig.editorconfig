@@ -32,16 +32,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXV0aC9SZXNldE15UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/fahmimaruoka/repo/Pitstop/Views/Dashboard/Addcategory.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGFzaGJvYXJkL0FkZGNhdGVnb3J5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [/Users/fahmimaruoka/repo/Pitstop/Views/Dashboard/Addorder.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGFzaGJvYXJkL0FkZG9yZGVyLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/fahmimaruoka/repo/Pitstop/Views/Dashboard/Addproduct.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGFzaGJvYXJkL0FkZHByb2R1Y3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/fahmimaruoka/repo/Pitstop/Views/Dashboard/Categories.cshtml]
@@ -60,16 +52,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGFzaGJvYXJkL0N1c3RvbWVyb3JkZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/fahmimaruoka/repo/Pitstop/Views/Dashboard/Editcategory.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGFzaGJvYXJkL0VkaXRjYXRlZ29yeS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [/Users/fahmimaruoka/repo/Pitstop/Views/Dashboard/Editorder.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGFzaGJvYXJkL0VkaXRvcmRlci5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/fahmimaruoka/repo/Pitstop/Views/Dashboard/Editproduct.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGFzaGJvYXJkL0VkaXRwcm9kdWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/fahmimaruoka/repo/Pitstop/Views/Dashboard/Index.cshtml]
@@ -112,6 +96,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9pbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/fahmimaruoka/repo/Pitstop/Views/Home/_CartItems.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9fQ2FydEl0ZW1zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/fahmimaruoka/repo/Pitstop/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -150,10 +138,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/fahmimaruoka/repo/Pitstop/Views/UserMaster/Partial/_CreateUpdateUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlck1hc3Rlci9QYXJ0aWFsL19DcmVhdGVVcGRhdGVVc2VyLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/fahmimaruoka/repo/Pitstop/Views/UserMaster/Partial/_LayoutUserMaster.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlck1hc3Rlci9QYXJ0aWFsL19MYXlvdXRVc2VyTWFzdGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/fahmimaruoka/repo/Pitstop/Views/UserMaster/Permissions.cshtml]

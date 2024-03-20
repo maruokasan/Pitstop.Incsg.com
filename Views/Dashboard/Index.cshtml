@@ -1,3 +1,5 @@
+@model DashboardViewModel;
+	
 	@{
     Layout = "/Views/Shared/_LayoutDash.cshtml";
     ViewBag.Title = "Dashboard";
@@ -1682,6 +1684,7 @@
 					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 						<!--begin::Container-->
 						<div class="container-xxl" id="kt_content_container">
+
 							<!--begin::Row-->
 							<div class="row g-5 g-xl-10 mb-xl-10">
 
@@ -1724,6 +1727,7 @@
 								</div>
 								<!--end::Col-->
 
+<!-- Stock Report -->
 								<!--begin::Col-->
 								<div class="col-lg-12 col-xl-12 col-xxl-6 mb-5 mb-xl-0">
 								<!--begin::Table Widget 5-->
@@ -1731,9 +1735,10 @@
 										<!--begin::Card header-->
 										<div class="card-header pt-7">
 											<!--begin::Title-->
+											<!-- Title -->
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bold text-gray-900">Stock Report</span>
-												<span class="text-gray-500 mt-1 fw-semibold fs-6">Total 2,356 Items in the Stock</span>
+												<span class="text-gray-500 mt-1 fw-semibold fs-6">Total @Model.TotalQuantity Items in the Stock</span>
 											</h3>
 											<!--end::Title-->
 											<!--begin::Actions-->
@@ -1743,36 +1748,38 @@
 													<!--begin::Destination-->
 													<div class="d-flex align-items-center fw-bold">
 														<!--begin::Label-->
-														<div class="text-muted fs-7 me-2">Cateogry</div>
+														<div class="text-muted fs-7 me-2">Category</div>
 														<!--end::Label-->
 														<!--begin::Select-->
 														<select class="form-select form-select-transparent text-gray-900 fs-7 lh-1 fw-bold py-0 ps-3 w-auto" data-control="select2" data-hide-search="true" data-dropdown-css-class="w-150px" data-placeholder="Select an option">
 															<option></option>
 															<option value="Show All" selected="selected">Show All</option>
-															<option value="a">Category A</option>
-															<option value="b">Category B</option>
+															@foreach (var category in Model.Categorys)
+															{
+																<option value="@category.Id">@category.Name</option>
+															}
 														</select>
 														<!--end::Select-->
-													</div>
 													<!--end::Destination-->
 													<!--begin::Status-->
 													<div class="d-flex align-items-center fw-bold">
-														<!--begin::Label-->
-														<div class="text-muted fs-7 me-2">Status</div>
-														<!--end::Label-->
-														<!--begin::Select-->
-														<select class="form-select form-select-transparent text-gray-900 fs-7 lh-1 fw-bold py-0 ps-3 w-auto" data-control="select2" data-hide-search="true" data-dropdown-css-class="w-150px" data-placeholder="Select an option" data-kt-table-widget-5="filter_status">
-															<option></option>
-															<option value="Show All" selected="selected">Show All</option>
-															<option value="In Stock">In Stock</option>
-															<option value="Out of Stock">Out of Stock</option>
-															<option value="Low Stock">Low Stock</option>
-														</select>
-														<!--end::Select-->
-													</div>
+													<!--begin::Label-->
+													<div class="text-muted fs-7 me-2">Status</div>
+													<!--end::Label-->
+													<!--begin::Select-->
+													<select class="form-select form-select-transparent text-gray-900 fs-7 lh-1 fw-bold py-0 ps-3 w-auto" data-control="select2" data-hide-search="true" data-dropdown-css-class="w-150px" data-placeholder="Select an option" data-kt-table-widget-5="filter_status">
+													<option></option>
+													<option value="Show All" selected="selected">Show All</option>
+													@foreach (var status in Model.Statuses)
+													{
+														<option value="@status">@status</option>
+													}
+												</select>
+													<!--end::Select-->
+												</div>
 													<!--end::Status-->
 													<!--begin::Search-->
-													<a href="apps/ecommerce/catalog/products.html" class="btn btn-light btn-sm">View Stock</a>
+													<a href="/Dashboard/Products" class="btn btn-light btn-sm">View Stock</a>
 													<!--end::Search-->
 												</div>
 												<!--begin::Filters-->
@@ -1784,207 +1791,38 @@
 										<div class="card-body">
 											<!--begin::Table-->
 											<table class="table align-middle table-row-dashed fs-6 gy-3" id="kt_table_widget_5_table">
-												<!--begin::Table head-->
-												<thead>
-													<!--begin::Table row-->
-													<tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
-														<th class="min-w-150px">Item</th>
-														<th class="text-end pe-3 min-w-100px">Product ID</th>
-														<th class="text-end pe-3 min-w-150px">Date Added</th>
-														<th class="text-end pe-3 min-w-100px">Price</th>
-														<th class="text-end pe-3 min-w-100px">Status</th>
-														<th class="text-end pe-0 min-w-75px">Qty</th>
-													</tr>
-													<!--end::Table row-->
-												</thead>
-												<!--end::Table head-->
-												<!--begin::Table body-->
-												<tbody class="fw-bold text-gray-600">
+											<thead>
+												<tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+													<th class="">Id</th>
+													<th class="">Item</th>
+													<th class="">Date Added</th>
+													<th class="">Price</th>
+													<th class="">Status</th>
+													<th class="">Qty</th>
+
+												</tr>
+											</thead>
+											<tbody class="fw-bold text-gray-600">
+												@foreach (var product in Model.Products)
+												{
 													<tr>
-														<!--begin::Item-->
+														<td class="">@product.Id</td>
 														<td>
-															<a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-900 text-hover-primary">Macbook Air M1</a>
+															<a href="/Dashboard/Product/@product.Id" class="text-gray-900 text-hover-primary">@product.Name</a>
 														</td>
-														<!--end::Item-->
-														<!--begin::Product ID-->
-														<td class="text-end">#XGY-356</td>
-														<!--end::Product ID-->
-														<!--begin::Date added-->
-														<td class="text-end">02 Apr, 2023</td>
-														<!--end::Date added-->
-														<!--begin::Price-->
-														<td class="text-end">$1,230</td>
-														<!--end::Price-->
-														<!--begin::Status-->
-														<td class="text-end">
-															<span class="badge py-3 px-4 fs-7 badge-light-primary">In Stock</span>
+														<td class="">@product.CreatedDate?.ToShortDateString()</td>
+														<td class="">$@product.Price</td>
+														<td class="">
+															<span class="badge py-3 px-4 fs-7 badge-light-primary">@product.Status</span>
 														</td>
-														<!--end::Status-->
-														<!--begin::Qty-->
-														<td class="text-end" data-order="58">
-															<span class="text-gray-900 fw-bold">58 PCS</span>
+														<td class="" data-order="@product.Qty">
+															<span class="text-gray-900 fw-bold">@product.Qty PCS</span>
 														</td>
-														<!--end::Qty-->
 													</tr>
-													<tr>
-														<!--begin::Item-->
-														<td>
-															<a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-900 text-hover-primary">Surface Laptop 4</a>
-														</td>
-														<!--end::Item-->
-														<!--begin::Product ID-->
-														<td class="text-end">#YHD-047</td>
-														<!--end::Product ID-->
-														<!--begin::Date added-->
-														<td class="text-end">01 Apr, 2023</td>
-														<!--end::Date added-->
-														<!--begin::Price-->
-														<td class="text-end">$1,060</td>
-														<!--end::Price-->
-														<!--begin::Status-->
-														<td class="text-end">
-															<span class="badge py-3 px-4 fs-7 badge-light-danger">Out of Stock</span>
-														</td>
-														<!--end::Status-->
-														<!--begin::Qty-->
-														<td class="text-end" data-order="0">
-															<span class="text-gray-900 fw-bold">0 PCS</span>
-														</td>
-														<!--end::Qty-->
-													</tr>
-													<tr>
-														<!--begin::Item-->
-														<td>
-															<a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-900 text-hover-primary">Logitech MX 250</a>
-														</td>
-														<!--end::Item-->
-														<!--begin::Product ID-->
-														<td class="text-end">#SRR-678</td>
-														<!--end::Product ID-->
-														<!--begin::Date added-->
-														<td class="text-end">24 Mar, 2023</td>
-														<!--end::Date added-->
-														<!--begin::Price-->
-														<td class="text-end">$64</td>
-														<!--end::Price-->
-														<!--begin::Status-->
-														<td class="text-end">
-															<span class="badge py-3 px-4 fs-7 badge-light-primary">In Stock</span>
-														</td>
-														<!--end::Status-->
-														<!--begin::Qty-->
-														<td class="text-end" data-order="290">
-															<span class="text-gray-900 fw-bold">290 PCS</span>
-														</td>
-														<!--end::Qty-->
-													</tr>
-													<tr>
-														<!--begin::Item-->
-														<td>
-															<a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-900 text-hover-primary">AudioEngine HD3</a>
-														</td>
-														<!--end::Item-->
-														<!--begin::Product ID-->
-														<td class="text-end">#PXF-578</td>
-														<!--end::Product ID-->
-														<!--begin::Date added-->
-														<td class="text-end">24 Mar, 2023</td>
-														<!--end::Date added-->
-														<!--begin::Price-->
-														<td class="text-end">$1,060</td>
-														<!--end::Price-->
-														<!--begin::Status-->
-														<td class="text-end">
-															<span class="badge py-3 px-4 fs-7 badge-light-danger">Out of Stock</span>
-														</td>
-														<!--end::Status-->
-														<!--begin::Qty-->
-														<td class="text-end" data-order="46">
-															<span class="text-gray-900 fw-bold">46 PCS</span>
-														</td>
-														<!--end::Qty-->
-													</tr>
-													<tr>
-														<!--begin::Item-->
-														<td>
-															<a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-900 text-hover-primary">HP Hyper LTR</a>
-														</td>
-														<!--end::Item-->
-														<!--begin::Product ID-->
-														<td class="text-end">#PXF-778</td>
-														<!--end::Product ID-->
-														<!--begin::Date added-->
-														<td class="text-end">16 Jan, 2023</td>
-														<!--end::Date added-->
-														<!--begin::Price-->
-														<td class="text-end">$4500</td>
-														<!--end::Price-->
-														<!--begin::Status-->
-														<td class="text-end">
-															<span class="badge py-3 px-4 fs-7 badge-light-primary">In Stock</span>
-														</td>
-														<!--end::Status-->
-														<!--begin::Qty-->
-														<td class="text-end" data-order="78">
-															<span class="text-gray-900 fw-bold">78 PCS</span>
-														</td>
-														<!--end::Qty-->
-													</tr>
-													<tr>
-														<!--begin::Item-->
-														<td>
-															<a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-900 text-hover-primary">Dell 32 UltraSharp</a>
-														</td>
-														<!--end::Item-->
-														<!--begin::Product ID-->
-														<td class="text-end">#XGY-356</td>
-														<!--end::Product ID-->
-														<!--begin::Date added-->
-														<td class="text-end">22 Dec, 2023</td>
-														<!--end::Date added-->
-														<!--begin::Price-->
-														<td class="text-end">$1,060</td>
-														<!--end::Price-->
-														<!--begin::Status-->
-														<td class="text-end">
-															<span class="badge py-3 px-4 fs-7 badge-light-warning">Low Stock</span>
-														</td>
-														<!--end::Status-->
-														<!--begin::Qty-->
-														<td class="text-end" data-order="8">
-															<span class="text-gray-900 fw-bold">8 PCS</span>
-														</td>
-														<!--end::Qty-->
-													</tr>
-													<tr>
-														<!--begin::Item-->
-														<td>
-															<a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-900 text-hover-primary">Google Pixel 6 Pro</a>
-														</td>
-														<!--end::Item-->
-														<!--begin::Product ID-->
-														<td class="text-end">#XVR-425</td>
-														<!--end::Product ID-->
-														<!--begin::Date added-->
-														<td class="text-end">27 Dec, 2023</td>
-														<!--end::Date added-->
-														<!--begin::Price-->
-														<td class="text-end">$1,060</td>
-														<!--end::Price-->
-														<!--begin::Status-->
-														<td class="text-end">
-															<span class="badge py-3 px-4 fs-7 badge-light-primary">In Stock</span>
-														</td>
-														<!--end::Status-->
-														<!--begin::Qty-->
-														<td class="text-end" data-order="124">
-															<span class="text-gray-900 fw-bold">124 PCS</span>
-														</td>
-														<!--end::Qty-->
-													</tr>
-												</tbody>
-												<!--end::Table body-->
-											</table>
+												}
+											</tbody>
+										</table>
+
 											<!--end::Table-->
 										</div>
 										<!--end::Card body-->
@@ -1994,6 +1832,8 @@
 								<!--end::Col-->
 							</div>
 							<!--end::Row-->
+<!-- End: Stock Report -->							
+
 							<!--begin::Row-->
 							<div class="row gy-5 g-xl-10">
 								<!--begin::Col-->
@@ -6452,5 +6292,35 @@ document.addEventListener('DOMContentLoaded', function () {
     // Call the fetchUserData function when the page loads
     fetchUserData();
 });
+
+//Stock Report//
+    // Function to filter table rows based on category and status
+    function filterTable() {
+        var categoryValue = document.getElementById('categorySelect').value;
+        var statusValue = document.getElementById('statusSelect').value;
+
+        var rows = document.querySelectorAll('#kt_table_widget_5_table tbody tr');
+
+        rows.forEach(function(row) {
+            var category = row.querySelector('.category').textContent;
+            var status = row.querySelector('.status').textContent;
+
+            var categoryMatch = categoryValue === 'Show All' || category === categoryValue;
+            var statusMatch = statusValue === 'Show All' || status === statusValue;
+
+            if (categoryMatch && statusMatch) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+
+    // Add event listeners to select elements
+    document.getElementById('categorySelect').addEventListener('change', filterTable);
+    document.getElementById('statusSelect').addEventListener('change', filterTable);
+
+    // Initial filtering when the page loads
+    filterTable();
 
 </script>

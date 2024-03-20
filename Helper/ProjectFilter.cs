@@ -24,6 +24,13 @@ namespace Pitstop.Helper
             List<string> allowedPaths = new List<string>
             {
                 "/Home/Cart",
+                "/Home/GetOurStory",
+                "/Home/AddToCart",
+                "/Home/RemoveFromCart",
+                "/Home/GetCartItems",
+                "/Home/ClearCart",
+                "/Dashboard/EditProduct"
+                
             };
 
             if (allowedPaths.Any(allowedPath => path.Value.Contains(allowedPath)))

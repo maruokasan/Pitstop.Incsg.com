@@ -23,6 +23,13 @@
 		<link href="~/assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
 		<link href="~/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 		<!--end::Global Stylesheets Bundle-->
+
+        <!-- Add this line to include SweetAlert CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.18/sweetalert2.min.css">
+
+<!-- Add this line to include SweetAlert JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.18/sweetalert2.min.js"></script>
+
     </head>
 <body>
             <!--Content-->
@@ -31,60 +38,43 @@
             </div>
 
         <!--Footer-->
-        <footer class="footer section">
-            <div class="footer__container container grid">
-                <div class="footer__content">
-                    <h3 class="footer__title">Our information</h3>
-                    <ul class="footer__list">
-                        <li>PitstopIncsg@gmail.com</li>
-                    </ul>
-                </div>
-                <div class="footer__content">
-                    <h3 class="footer__title">About Us</h3>
+       <footer class="footer section">
+    <div class="footer__container container grid">
+        <div class="footer__content">
+            <h3 class="footer__title">Our Information</h3>
+            <ul class="footer__list">
+                <li>PitstopIncsg@gmail.com</li>
+            </ul>
+        </div>
 
-                    <ul class="footer__links">
-                        <li>
-                            <a href="#" class="footer__link">Customer Support</a>
-                        </li>
-                        <li>
-                            <a href="#" class="footer__link">About Us</a>
-                        </li>
-                        <li>
-                            <a href="#" class="footer__link">Copyright</a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="footer__content">
+            <h3 class="footer__title">About Us</h3>
+            <ul class="footer__links">
+                @* <li><a href="#" class="footer__link">Customer Support</a></li> *@
+                <li><a href="#ourStory" class="footer__link">Company Overview</a></li>
+                <li><a href="#" class="footer__link">Copyright</a></li>
+            </ul>
+        </div>
 
-                <div class="footer__content">
-                    <h3 class="footer__title">Product</h3>
+        <div class="footer__content">
+            <h3 class="footer__title">Products</h3>
+            <ul class="footer__links">
+                <li><a href="#featured" class="footer__link">Hoodies</a></li>
+                <li><a href="#" class="footer__link">More Coming Soon</a></li>
+            </ul>
+        </div>
 
-                    <ul class="footer__links">
-                        <li>
-                            <a href="#" class="footer__link">Hoodies</a>
-                        </li>
-                        <li>
-                            <a href="/Home/index" class="footer__link">More Coming Soon</a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="footer__content">
+            <h3 class="footer__title">Follow Us</h3>
+            <ul class="footer__social">
+                <li><a href="https://twitter.com/" target="_blank" class="footer__social-link"><i class='bx bxl-tiktok'></i></a></li>
+                <li><a href="https://www.instagram.com/" target="_blank" class="footer__social-link"><i class='bx bxl-instagram'></i></a></li>
+            </ul>
+        </div>
+    </div>
 
-                <div class="footer__content">
-                    <h3 class="footer__title">Social</h3>
-
-                    <ul class="footer__social">
-                        <a href="https://twitter.com/" target="_blank" class="footer__social-link">
-                            <i class='bx bxl-tiktok'></i>
-                        </a>
-
-                        <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
-                            <i class='bx bxl-instagram' ></i>
-                        </a>
-                    </ul>
-                </div>
-            </div>
-
-            <span class="footer__copy">&#169; Pitstop.IncSg. All rigths reserved</span>
-        </footer>
+    <div class="footer__copy">&copy; Pitstop.IncSg. All rights reserved.</div>
+</footer>
 
         <a href="#" class="scrollup" id="scroll-up"> 
             <i class='bx bx-up-arrow-alt scrollup__icon' ></i>

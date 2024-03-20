@@ -1,0 +1,67 @@
+@foreach (var item in Model)
+{
+    <div class="row mb-3 align-items-center" data-discount="@item.Discount">
+        <!-- Left Column -->
+        <div class="col-md-6">
+            <!-- Image and Title -->
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    @if (item.Product != null && !string.IsNullOrEmpty(item.Product.Thumbnail))
+                    {
+                        <img src="@Url.Content($"~/Thumbnails/{item.Product.Thumbnail}")" class="img-fluid rounded" alt="@item.Product.Name">
+                    }
+                    else
+                    {
+                        <p>No thumbnail available</p>
+                    }
+                </div>
+                <div class="col-md-8">
+                    @if (item.Product != null)
+                    {
+                        <h5 class="mb-0">@item.Product.Name</h5>
+                        <p class="text-muted">Price: $@item.Product.Price</p>
+                    }
+                    else
+                    {
+                        <p>Product details not available</p>
+                    }
+                </div>
+            </div>
+        </div>
+        <!-- Right Column -->
+        <div class="col-md-6">
+            <!-- Quantity and Size -->
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    @if (item.Product != null)
+                    {
+                        <input type="number" class="form-control quantity-input" value="@item.Quantity" data-item-id="@item.Id" style="width: 100%;">
+                    }
+                    else
+                    {
+                        <p>Quantity not available</p>
+                    }
+                </div>
+                <div class="col-md-6">
+                    @if (item.Product != null)
+                    {
+                        <select class="form-select size-select" data-item-id="@item.Id" style="width: 100%;">
+                            @foreach (var size in item.Size.Split(',')) // Split sizes and create an option for each size
+                            {
+                                <option value="@size.Trim()">@size.Trim()</option>
+                            }
+                        </select>
+                    }
+                    else
+                    {
+                        <p>Size not available</p>
+                    }
+                </div>
+                 <div class="col-md-2 mt-4">
+                    <button class="btn btn-danger remove-item-btn" data-item-id="@item.Id">Remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+}

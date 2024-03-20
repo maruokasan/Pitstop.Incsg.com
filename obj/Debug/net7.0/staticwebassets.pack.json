@@ -5,20 +5,20 @@
       "PackagePath": "staticwebassets/.DS_Store"
     },
     {
-      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/FeaturedItems/4_pstest.png",
-      "PackagePath": "staticwebassets/FeaturedItems/4_pstest.png"
+      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/FeaturedItems/.DS_Store",
+      "PackagePath": "staticwebassets/FeaturedItems/.DS_Store"
     },
     {
-      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/FeaturedItems/6_IMG_9433.jpg",
-      "PackagePath": "staticwebassets/FeaturedItems/6_IMG_9433.jpg"
+      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/Media/.DS_Store",
+      "PackagePath": "staticwebassets/Media/.DS_Store"
     },
     {
-      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/FeaturedItems/7_IMG_9433.jpg",
-      "PackagePath": "staticwebassets/FeaturedItems/7_IMG_9433.jpg"
+      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/Media/2_IMG_0767.JPG",
+      "PackagePath": "staticwebassets/Media/2_IMG_0767.JPG"
     },
     {
-      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/OurStoryImages/208d23f7-bf3e-4872-911c-1512abf10b54.JPG",
-      "PackagePath": "staticwebassets/OurStoryImages/208d23f7-bf3e-4872-911c-1512abf10b54.JPG"
+      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/OurStoryImages/3f16ceb9-d638-4512-ab80-d18ffca8b5b4.JPG",
+      "PackagePath": "staticwebassets/OurStoryImages/3f16ceb9-d638-4512-ab80-d18ffca8b5b4.JPG"
     },
     {
       "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/Section1Media/c5548cfe-30a6-4bc6-ae77-7dc142c9eeaf_IMG_0766.JPG",
@@ -29,16 +29,40 @@
       "PackagePath": "staticwebassets/Section2Media/.DS_Store"
     },
     {
-      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/Section2Media/4b2f017e-a26b-40d6-b81f-a0bd21bf7499_IMG_0766.JPG",
-      "PackagePath": "staticwebassets/Section2Media/4b2f017e-a26b-40d6-b81f-a0bd21bf7499_IMG_0766.JPG"
+      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/Section2Media/282d3ea9-8d3a-4c65-b2ae-a57079ca027c_IMG_0766.JPG",
+      "PackagePath": "staticwebassets/Section2Media/282d3ea9-8d3a-4c65-b2ae-a57079ca027c_IMG_0766.JPG"
     },
     {
-      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/Section2Media/6041990c-653f-4926-b926-149fafb5b4e4_IMG_0765.JPG",
-      "PackagePath": "staticwebassets/Section2Media/6041990c-653f-4926-b926-149fafb5b4e4_IMG_0765.JPG"
+      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/Section2Media/6287d9e2-c828-4d95-ba39-b6924d60c802_IMG_0764.JPG",
+      "PackagePath": "staticwebassets/Section2Media/6287d9e2-c828-4d95-ba39-b6924d60c802_IMG_0764.JPG"
     },
     {
-      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/Section2Media/831e4897-8982-4724-85b7-8a496856f2f2_IMG_0767.JPG",
-      "PackagePath": "staticwebassets/Section2Media/831e4897-8982-4724-85b7-8a496856f2f2_IMG_0767.JPG"
+      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/Section2Media/93cbeac9-2c0f-4a44-8cab-77e66278eb7d_IMG_0765.JPG",
+      "PackagePath": "staticwebassets/Section2Media/93cbeac9-2c0f-4a44-8cab-77e66278eb7d_IMG_0765.JPG"
+    },
+    {
+      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/Testimonial/1_IMG_0764.JPG",
+      "PackagePath": "staticwebassets/Testimonial/1_IMG_0764.JPG"
+    },
+    {
+      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/Thumbnails/.DS_Store",
+      "PackagePath": "staticwebassets/Thumbnails/.DS_Store"
+    },
+    {
+      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/Thumbnails/1_IMG_0764.JPG",
+      "PackagePath": "staticwebassets/Thumbnails/1_IMG_0764.JPG"
+    },
+    {
+      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/Thumbnails/2_IMG_0766.JPG",
+      "PackagePath": "staticwebassets/Thumbnails/2_IMG_0766.JPG"
+    },
+    {
+      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/Thumbnails/622c7c8c-0b52-4118-86aa-ebe6118ec303.JPG",
+      "PackagePath": "staticwebassets/Thumbnails/622c7c8c-0b52-4118-86aa-ebe6118ec303.JPG"
+    },
+    {
+      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/Thumbnails/65be85b7-9163-427a-be09-74b6133f0b62.JPG",
+      "PackagePath": "staticwebassets/Thumbnails/65be85b7-9163-427a-be09-74b6133f0b62.JPG"
     },
     {
       "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/assets/css/style.bundle.css",
@@ -8985,10 +9009,6 @@
       "PackagePath": "staticwebassets/assets/plugins/global/plugins.bundle.js"
     },
     {
-      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/css/Cart.css",
-      "PackagePath": "staticwebassets/css/Cart.css"
-    },
-    {
       "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/css/dash.css",
       "PackagePath": "staticwebassets/css/dash.css"
     },
@@ -9199,10 +9219,6 @@
     {
       "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/js/.DS_Store",
       "PackagePath": "staticwebassets/js/.DS_Store"
-    },
-    {
-      "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/js/home.js",
-      "PackagePath": "staticwebassets/js/home.js"
     },
     {
       "Id": "/Users/fahmimaruoka/repo/Pitstop/wwwroot/js/login-general.js",

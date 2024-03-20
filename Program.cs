@@ -15,7 +15,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromMinutes(5); // Set timeout to 5 minutes
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Set timeout to 30 minutes or as desired
     options.Cookie.HttpOnly = true; // Prevent access to the cookie from client-side scripts
     options.Cookie.IsEssential = true; // Make the cookie essential for the session to function
 });
@@ -90,12 +90,12 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseSession(); // Add session middleware if needed
+
 app.UseAuthentication(); // Before routing
 app.UseAuthorization();
 
 app.UseRouting();
-
-app.UseSession(); // Add session middleware if needed
 
 app.MapControllerRoute(
     name: "default",
@@ -104,6 +104,7 @@ app.MapControllerRoute(
 app.UseSession();
 
 app.Run();
+
 
 
 static DirectoryInfo GetKeyRingDirectoryInfo(WebApplicationBuilder builder)

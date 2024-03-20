@@ -4,84 +4,408 @@
     ViewData["Title"] = "Products";
 	}
 
-					<!--begin::Content-->
-					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-						<!--begin::Container-->
-						<div class="container-xxl" id="kt_content_container">
-							<!--begin::Products-->
-							<div class="card card-flush">
-								<!--begin::Card header-->
-								<div class="card-header align-items-center py-5 gap-2 gap-md-5">
-									<!--begin::Card title-->
-									<div class="card-title">
-										<!--begin::Search-->
-										<div class="d-flex align-items-center position-relative my-1">
-											<i class="ki-duotone ki-magnifier fs-3 position-absolute ms-4">
-												<span class="path1"></span>
-												<span class="path2"></span>
-											</i>
-											<input type="text" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-12" placeholder="Search Product" />
-										</div>
-										<!--end::Search-->
-									</div>
-									<!--end::Card title-->
-									<!--begin::Card toolbar-->
-									<div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-										<div class="w-100 mw-150px">
-											<!--begin::Select2-->
-											<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Status" data-kt-ecommerce-product-filter="status">
-												<option></option>
-												<option value="all">All</option>
-												<option value="published">Published</option>
-												<option value="scheduled">Scheduled</option>
-												<option value="inactive">Inactive</option>
-											</select>
-											<!--end::Select2-->
-										</div>
-										<!--begin::Add product-->
-										<a href="/Dashboard/Addproduct" class="btn btn-primary">Add Product</a>
-										<!--end::Add product-->
-									</div>
-									<!--end::Card toolbar-->
-								</div>
-								<!--end::Card header-->
-								<!--begin::Card body-->
-								<div class="card-body pt-0">
-									<!--begin::Table-->
-									<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_products_table">
-										<thead>
-											<tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
-												<th class="w-10px pe-2">
-													<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-														<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_ecommerce_products_table .form-check-input" value="1" />
-													</div>
-												</th>
-												<th class="min-w-200px">Product</th>
-												<th class="text-end min-w-100px">SKU</th>
-												<th class="text-end min-w-70px">Qty</th>
-												<th class="text-end min-w-100px">Price</th>
-												<th class="text-end min-w-100px">Status</th>
-												<th class="text-end min-w-70px">Actions</th>
-											</tr>
-										</thead>
-										<tbody class="fw-semibold text-gray-600">
+	<style>
+	#kt_ecommerce_products_table th
+	{
+    text-align: left !important;
+	}
 
-										</tbody>
-									</table>
-									<!--end::Table-->
-								</div>
-								<!--end::Card body-->
-							</div>
-							<!--end::Products-->
-						</div>
-						<!--end::Container-->
+	</style>
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+	<!--begin::Container-->
+	<div class="container-xxl" id="kt_content_container">
+		<!--begin::Products-->
+		<div class="card card-flush">
+			<!--begin::Card header-->
+			<div class="card-header align-items-center py-5 gap-2 gap-md-5">
+				<!--begin::Card title-->
+				<div class="card-title">
+					<!--begin::Search-->
+					<div class="d-flex align-items-center position-relative my-1">
+						<i class="ki-duotone ki-magnifier fs-3 position-absolute ms-4">
+							<span class="path1"></span>
+							<span class="path2"></span>
+						</i>
+						<input type="text" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-12" placeholder="Search Product" />
 					</div>
-					<!--end::Content-->
+					<!--end::Search-->
+				</div>
+				<!--end::Card title-->
+				<!--begin::Card toolbar-->
+				<div class="card-toolbar flex-row-fluid justify-content-end gap-5">
+					<div class="w-100 mw-150px">
+						<!--begin::Select2-->
+						<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Status" data-kt-ecommerce-product-filter="status">
+							<option></option>
+							<option value="all">All</option>
+							<option value="published">Published</option>
+							<option value="scheduled">Scheduled</option>
+							<option value="inactive">Inactive</option>
+						</select>
+						<!--end::Select2-->
+					</div>
+					<!--begin::Add product-->
+					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">Add Product</button>
+					<!--end::Add product-->
+				</div>
+				<!--end::Card toolbar-->
+			</div>
+			<!--end::Card header-->
+			<!--begin::Card body-->
+			<div class="card-body pt-0">
+				<!--begin::Table-->
+				<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_products_table">
+					<thead>
+						<tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+							<th class="min-w-50px">Id</th>
+							<th class="min-w-200px">Product</th>
+							<th class="text-end min-w-100px">SKU</th>
+                            <th class="text-end min-w-100px">Size</th>
+							<th class="text-end min-w-70px">Qty</th>
+							<th class="text-end min-w-100px">Price</th>
+							<th class="text-end min-w-100px">Status</th>
+							<th class="text-end min-w-70px">Actions</th>
+						</tr>
+					</thead>
+					<tbody class="fw-semibold text-gray-600">
+
+					</tbody>
+				</table>
+				<!--end::Table-->
+			</div>
+			<!--end::Card body-->
+		</div>
+		<!--end::Products-->
+	</div>
+	<!--end::Container-->
+</div>
+<!--end::Content-->
+
+<!-- Edit Product Modal -->
+<div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Form for editing product data -->
+                <form id="editProductForm" action="/Dashboard/EditProduct" method="post">
+                    <!-- Include necessary input fields to edit product data -->
+                    <input type="hidden" name="Id" id="editProductId" value="" />
+                    <div class="mb-3 row">
+                        <label for="editProductThumbnail" class="col-sm-3 col-form-label">Thumbnail</label>
+                        <div class="col-sm-9">
+                            <!-- Hidden input to store the filename of the existing thumbnail -->
+                            <input type="hidden" id="editProductThumbnailFileName" name="Thumbnail" value="" />
+                            <!-- Thumbnail display -->
+                            <div id="editProductThumbnail" class="symbol symbol-50px me-4" style="background-image: url('/Thumbnails/1_IMG_0764.JPG');"></div>
+                            <!-- Upload button -->
+                            <input type="file" id="editThumbnailInput" name="thumbnail" accept="image/*">
+                        </div>
+                    </div>
+                    @* <div class="mb-3 row">
+                        <label for="editProductMedia" class="col-sm-3 col-form-label">Media</label>
+                        <div class="col-sm-9">
+                            <input type="file" class="form-control" id="editProductMedia" name="Media[]" multiple accept="image/*" />
+                        </div>
+                    </div> *@
+                    <div class="mb-3 row">
+                        <label for="editProductName" class="col-sm-3 col-form-label">Product Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="editProductName" name="Name" required />
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="editProductSku" class="col-sm-3 col-form-label">SKU</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="editProductSku" name="SKU" required />
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+
+                        <div class="mb-3">
+                        <label class="form-label">Sizes</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sizes[]" id="editSizeS" value="S">
+                            <label class="form-check-label" for="editSizeS">S</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sizes[]" id="editSizeM" value="M">
+                            <label class="form-check-label" for="editSizeM">M</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sizes[]" id="editSizeL" value="L">
+                            <label class="form-check-label" for="editSizeL">L</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sizes[]" id="editSizeXL" value="XL">
+                            <label class="form-check-label" for="editSizeXL">XL</label>
+                        </div>
+
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="editProductQty" class="col-sm-3 col-form-label">Quantity</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="editProductQty" name="Qty" required />
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="editProductPrice" class="col-sm-3 col-form-label">Price</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="editProductPrice" name="Price" required />
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="editProductStatus" class="col-sm-3 col-form-label">Status</label>
+                        <div class="col-sm-9">
+                            <select class="form-select" id="editProductStatus" name="Status" required>
+                                <option value="Published">Published</option>
+                                <option value="Scheduled">Scheduled</option>
+                                <option value="Inactive">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="editProductCategory" class="col-sm-3 col-form-label">Category</label>
+                        <div class="col-sm-9">
+                            <select class="form-select" id="editProductCategory" name="Category">
+                                @foreach (var category in ViewBag.Categories)
+                                {
+                                    <option value="@category.Value">@category.Text</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="editProductDescription" class="col-sm-3 col-form-label">Description</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" id="editProductDescription" name="Description"></textarea>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="editProductTags" class="col-sm-3 col-form-label">Tags</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="editProductTags" name="Tags" />
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="editProductDiscount" class="col-sm-3 col-form-label">Discount</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="editProductDiscount" name="Discount" />
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="editProductTax" class="col-sm-3 col-form-label">Tax</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="editProductTax" name="Tax" />
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="editProductVat" class="col-sm-3 col-form-label">VAT</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="editProductVat" name="Vat" />
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="editProductBarcode" class="col-sm-3 col-form-label">Barcode</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="editProductBarcode" name="Barcode" />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End: Edit Product Modal -->
+
+
+<!-- Add Product Modal -->
+<div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Form for adding product data -->
+                <form id="addProductForm" action="/Dashboard/AddProduct" method="post">
+                    <div class="mb-3">
+                        <label for="nameInput" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="nameInput" name="Name" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="skuInput" class="form-label">SKU</label>
+                        <input type="text" class="form-control" id="skuInput" name="SKU" required />
+                    </div>
+
+                        <div class="mb-3">
+                        <label class="form-label">Sizes:</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sizes[]" id="editSizeS" value="S">
+                            <label class="form-check-label" for="editSizeS">S</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sizes[]" id="editSizeM" value="M">
+                            <label class="form-check-label" for="editSizeM">M</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sizes[]" id="editSizeL" value="L">
+                            <label class="form-check-label" for="editSizeL">L</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sizes[]" id="editSizeXL" value="XL">
+                            <label class="form-check-label" for="editSizeXL">XL</label>
+                        </div>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="qtyInput" class="form-label">Quantity</label>
+                        <input type="number" class="form-control" id="qtyInput" name="Qty" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="priceInput" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="priceInput" name="Price" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="statusInput" class="form-label">Status</label>
+                        <select class="form-select" id="statusInput" name="Status" required>
+                            <option value="Published">Published</option>
+                            <option value="Scheduled">Scheduled</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="categoryInput" class="form-label">Category</label>
+                        <!-- Dropdown list for selecting categories -->
+                        <select class="form-select" id="categoryInput" name="Category">
+                            <option value="">Select a category...</option>
+                            <!-- Populate dropdown options with categories from ViewBag.Categories -->
+                            @foreach (var category in ViewBag.Categories)
+                            {
+                                <option value="@category.Value">@category.Text</option>
+                            }
+                        </select>
+                    </div>
+					<div class="mb-3">
+						<label for="thumbnailInput" class="form-label">Thumbnail</label>
+						<input type="file" class="form-control" id="thumbnailInput" name="Thumbnail" accept="image/*" required />
+					</div>
+					<div class="mb-3">
+						<label for="descriptionInput" class="form-label">Description</label>
+						<textarea class="form-control" id="descriptionInput" name="Description"></textarea>
+					</div>
+					<div class="mb-3">
+						<label for="tagsInput" class="form-label">Tags</label>
+						<input type="text" class="form-control" id="tagsInput" name="Tags" />
+					</div>
+					<div class="mb-3" id="mediaInputs">
+						<label class="form-label">Media (up to 3 files)</label>
+						<div>
+							<input type="file" class="form-control" name="Media" id="mediaInput" accept="image/*" multiple />
+						</div>
+					</div>
+					<button type="button" class="btn btn-secondary mb-3" id="addMediaInput">Add Another Media</button>
+                    <div class="mb-3">
+                        <label for="discountInput" class="form-label">Discount</label>
+                        <input type="text" class="form-control" id="discountInput" name="Discount" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="taxInput" class="form-label">Tax</label>
+                        <input type="text" class="form-control" id="taxInput" name="Tax" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="vatInput" class="form-label">VAT</label>
+                        <input type="text" class="form-control" id="vatInput" name="Vat" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="barcodeInput" class="form-label">Barcode</label>
+                        <input type="text" class="form-control" id="barcodeInput" name="Barcode" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Product</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End: Add Product Modal -->
+
 
 <script>
+//Display Product//
 $(document).ready(function () {
     function initializeDataTable() {
-        $('#kt_ecommerce_products_table').DataTable();
+        $('#kt_ecommerce_products_table').DataTable({
+            "columns": [
+                { "data": "id", "className": "dt-left" },
+                {
+                    "data": null,
+                    "className": "dt-left",
+                    "render": function(data, type, row) {
+                        return `
+                            <div class="d-flex align-items-center">
+                                <!-- Thumbnail -->
+                                <div class="symbol symbol-50px me-4">
+                                    <span class="symbol-label" style="background-image:url('/Thumbnails/${row.thumbnail}');"></span>
+                                </div>
+                                <!-- Product details -->
+                                <div>
+                                    <a href="#" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1">${row.name}</a>
+                                    <div class="text-muted fs-7 fw-bold">${row.description}</div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                },
+                { "data": "sku", "className": "dt-left" },
+                { "data": "size", "className": "dt-left" },
+                { "data": "qty", "className": "dt-left" },
+                { "data": "price", "className": "dt-left" },
+                { "data": "status", "className": "dt-left" },
+                {
+                    "data": null,
+                    "className": "dt-left",
+                    "render": function(data, type, row) {
+                        return `
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Actions
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li>
+                                    <a class="dropdown-item edit-product" href="#"
+                                    data-id="${row.id}"
+                                    data-name="${row.name}"
+                                    data-sku="${row.sku}"
+                                    data-size="${row.size}"
+                                    data-qty="${row.qty}"
+                                    data-price="${row.price}"
+                                    data-status="${row.status}"
+                                    data-category="${row.category}"
+                                    data-description="${row.description}"
+                                    data-tags="${row.tags}"
+                                    data-discount="${row.discount}"
+                                    data-tax="${row.tax}"
+                                    data-vat="${row.vat}"
+                                    data-barcode="${row.barcode}"
+                                    
+                                    >Edit</a>
+                                </li>
+
+                                    <li><a class="dropdown-item delete-product" href="#" data-id="${row.id}">Delete</a></li>
+                                </ul>
+                            </div>
+                        `;
+                    }
+                }
+            ]
+        });
     }
 
     function fetchDataFromServer() {
@@ -90,21 +414,27 @@ $(document).ready(function () {
             type: 'POST',
             dataType: 'json',
             success: function (response) {
-                // Check if data is not empty
                 if (response && response.data && response.data.length > 0) {
-                    // Extract and format required fields
-                    var formattedData = response.data.map(function(item) {
+                    var formattedData = response.data.map(function (item) {
                         return {
-							id: item.id,
+                            id: item.id,
                             name: item.name,
                             sku: item.sku,
+                            size: item.size,
                             qty: item.qty,
                             price: item.price,
                             status: item.status,
-							category: item.category
+                            description: item.description,
+                            tags: item.tags,
+                            discount: item.discount,
+                            tax: item.tax,
+                            vat: item.vat,
+                            barcode: item.barcode,
+                            thumbnail: item.thumbnail,
+                            media: item.media,
+
                         };
                     });
-                    // Populate DataTable with formatted data
                     $('#kt_ecommerce_products_table').DataTable().clear().rows.add(formattedData).draw();
                 } else {
                     console.log('No data returned from the server.');
@@ -118,7 +448,265 @@ $(document).ready(function () {
 
     initializeDataTable();
     fetchDataFromServer();
+//End: Display Product//
+
+//Edit Product//
+function extractThumbnailFileName(thumbnailUrl) {
+    var fileNameWithQuote = thumbnailUrl.split('/').pop().replace(')', ''); 
+    return fileNameWithQuote.replace(/["]+/g, '');
+}
+
+// Edit Product
+$(document).ready(function () {
+    $('#kt_ecommerce_products_table').on('click', '.edit-product', function(e) {
+        e.preventDefault();
+        var productId = $(this).data('id');
+        var productName = $(this).data('name');
+        var productSku = $(this).data('sku');
+        var productSize = $(this).data('size');
+        var productQty = $(this).data('qty');
+        var productPrice = $(this).data('price');
+        var productStatus = $(this).data('status');
+        var productCategory = $(this).data('category');
+        var productDescription = $(this).data('description');
+        var productTags = $(this).data('tags');
+        var productDiscount = $(this).data('discount');
+        var productTax = $(this).data('tax');
+        var productVat = $(this).data('vat');
+        var productBarcode = $(this).data('barcode');
+        var productThumbnail = $(this).closest('.d-flex').find('.symbol-label').css('background-image');
+        var thumbnailFileName = extractThumbnailFileName(productThumbnail);
+
+        openEditModal(productId, productName, productSku, productSize, productQty, productPrice, productStatus, productCategory, productDescription, productTags, productDiscount, productTax, productVat, productBarcode, productThumbnail, thumbnailFileName);
+    });
+
+        function openEditModal(productId, productName, productSku, productSize, productQty, productPrice, productStatus, productCategory, productDescription, productTags, productDiscount, productTax, productVat, productBarcode, productThumbnail, thumbnailFileName) {
+        // Set the values of the input fields in the edit modal
+        $('#editProductId').val(productId);
+        $('#editProductName').val(productName);
+        $('#editProductSku').val(productSku);
+        
+        // Check if productSize is null or undefined
+        if (productSize) {
+            // Split the productSize string by comma into an array
+            var sizes = productSize.split(',');
+            // Check checkboxes based on the sizes array
+            sizes.forEach(function(size) {
+                $('#editSize' + size).prop('checked', true);
+            });
+        }
+        
+        $('#editProductQty').val(productQty);
+        $('#editProductPrice').val(productPrice);
+        $('#editProductStatus').val(productStatus);
+        $('#editProductCategory').val(productCategory);
+        $('#editProductDescription').val(productDescription);
+        $('#editProductTags').val(productTags);
+        $('#editProductDiscount').val(productDiscount);
+        $('#editProductTax').val(productTax);
+        $('#editProductVat').val(productVat);
+        $('#editProductBarcode').val(productBarcode);
+        $('#editProductThumbnailFileName').val(thumbnailFileName);
+
+        // Dynamically set the thumbnail background image if it exists
+        if (productThumbnail) {
+            $('#editProductThumbnail').css('background-image', productThumbnail);
+        }
+
+        // Show the edit modal
+        $('#editProductModal').modal('show');
+    }
+
+
+        $('#editProductForm').submit(function(e) {
+        e.preventDefault();
+
+        // Create a new FormData object
+        var formData = new FormData($(this)[0]);
+
+         // Collect selected sizes
+        var selectedSizes = [];
+        $('input[name="sizes[]"]:checked').each(function() {
+            selectedSizes.push($(this).val());
+        });
+
+        // Join selected sizes into a single string separated by commas
+        var sizesString = selectedSizes.join(',');
+
+        // Set AvailableSizes equal to sizes
+        formData.append('AvailableSizes', sizesString); // Add this line
+
+         // Retrieve the new thumbnail file input
+        var newThumbnailFile = $('#editThumbnailInput')[0].files[0];
+        if (newThumbnailFile) {
+            formData.append('thumbnail', newThumbnailFile);
+        }
+
+        // Send AJAX request
+        $.ajax({
+            url: '/Dashboard/EditProduct',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                // Handle success response
+                if (response.success) {
+                    // Show success message
+                    alert('Product updated successfully!');
+                    // Reload the page or update UI as needed
+                    location.reload();
+                } else {
+                    // Show error message
+                    alert('Failed to update product: ' + response.message);
+                }
+            },
+            error: function(xhr, errorText, errorType) {
+                // Handle error response
+                console.log('AJAX Error: ' + errorText + ' (' + errorType + ')');
+                alert('Failed to update product: ' + errorText);
+            }
+        });
+    });
+}); 
+function extractThumbnailFileName(thumbnailUrl) {
+    var fileNameWithQuote = thumbnailUrl.split('/').pop().replace(')', ''); 
+    return fileNameWithQuote.replace(/["]+/g, '');
+}
+
+//End: Edit Product//
+
+//Delete Product//
+    $('#kt_ecommerce_products_table').on('click', '.delete-product', function(e) {
+        e.preventDefault();
+        var productId = $(this).data('id');
+        if (confirm("Are you sure you want to delete this product?")) {
+            deleteProduct(productId);
+        }
+    });
+
+    function deleteProduct(productId) {
+        $.ajax({
+            url: '/Dashboard/DeleteProduct',
+            type: 'POST',
+            data: { id: productId },
+            success: function(response) {
+                fetchDataFromServer();
+                location.reload();
+            },
+            error: function(xhr, errorText, errorType) {
+                console.log('AJAX Error: ' + errorText + ' (' + errorType + ')');
+            }
+        });
+    }
+});
+//End: Delete Product//
+
+// Add Product
+$(document).ready(function () {
+    $('#addProductForm').submit(function (e) {
+        e.preventDefault();
+        if (validateForm()) {
+            addProduct();
+        }
+    });
+
+    function validateForm() {
+        var thumbnailInput = document.getElementById('thumbnailInput');
+        if (!thumbnailInput || !thumbnailInput.files || thumbnailInput.files.length === 0) {
+            alert('Please select a thumbnail image.');
+            return false;
+        }
+
+        // Check if at least one size is selected
+        var selectedSizes = $('input[name="sizes[]"]:checked');
+        if (selectedSizes.length === 0) {
+            alert('Please select at least one size.');
+            return false;
+        }
+
+        // Validation passed
+        return true;
+    }
+
+    function addProduct() {
+        var formData = new FormData();
+
+        // Append form data
+        formData.append('Name', $('#nameInput').val());
+        formData.append('SKU', $('#skuInput').val());
+        formData.append('Qty', $('#qtyInput').val());
+        formData.append('Price', $('#priceInput').val());
+        formData.append('Status', $('#statusInput').val());
+        formData.append('Category', $('#categoryInput').val());
+        formData.append('Description', $('#descriptionInput').val());
+        formData.append('Tags', $('#tagsInput').val());
+        formData.append('Discount', $('#discountInput').val());
+        formData.append('Tax', $('#taxInput').val());
+        formData.append('Vat', $('#vatInput').val());
+        formData.append('Barcode', $('#barcodeInput').val());
+
+        // Append selected sizes
+        var selectedSizes = [];
+        $('input[name="sizes[]"]:checked').each(function() {
+            selectedSizes.push($(this).val());
+        });
+        formData.append('sizes[]', selectedSizes.join(','));
+
+        // Append thumbnail file
+        var thumbnailInput = document.getElementById('thumbnailInput');
+        if (thumbnailInput.files.length > 0) {
+            formData.append('Thumbnail', thumbnailInput.files[0]);
+        }
+
+        // Append media files
+        var mediaInputs = document.querySelectorAll('input[name="Media"]');
+        mediaInputs.forEach(function(input) {
+            if (input.files.length > 0) {
+                for (var i = 0; i < input.files.length; i++) {
+                    formData.append('Media', input.files[i]);
+                }
+            }
+        });
+
+        // Perform AJAX submission
+        $.ajax({
+            url: '/Dashboard/AddProduct',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                $('#addProductModal').modal('hide');
+                Swal.fire({
+                    icon: 'success',
+                    title: '<span style="color: white;">Product Added Successfully!</span>',
+                    timer: 2000,
+                    showConfirmButton: false
+                }).then(function () {
+                    location.reload();
+                });
+            },
+            error: function (xhr, errorText, errorType) {
+                console.log('AJAX Error: ' + errorText + ' (' + errorType + ')');
+            }
+        });
+    }
 });
 
+
+document.getElementById('addMediaInput').addEventListener('click', function() {
+    var mediaInputs = document.getElementById('mediaInputs');
+    if (mediaInputs.children.length < 4) { // Limit to 3 file inputs
+        var newInput = document.createElement('input');
+        newInput.type = 'file';
+        newInput.className = 'form-control';
+        newInput.name = 'Media[]'; // Make sure each input has a unique name
+        newInput.accept = 'image/*';
+        mediaInputs.appendChild(newInput);
+    }
+});
+//End: Add Product//
+
+
 </script>
-					

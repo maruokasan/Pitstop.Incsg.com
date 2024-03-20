@@ -235,36 +235,8 @@ namespace Pitstop.Service
 
         public List<Section2Media> GetSection2Media()
         {
-            // Implement logic to retrieve Section 2 media from the database
-            return _PitstopContext.Section2Media.OrderBy(m => m.CarouselNumber).ToList();
-        }
-        public int GetNextCarouselNumber()
-        {
-            // Find the maximum carousel number and increment it to get the next available carousel number
-            int maxCarouselNumber = _PitstopContext.Section2Media.Max(s => (int?)s.CarouselNumber) ?? 0;
-            return maxCarouselNumber + 1;
-        }
-
-        public void DeleteCarouselEntries(int carouselNumber)
-        {
-            // Delete old entries for the specific carousel number
-            var oldEntries = _PitstopContext.Section2Media.Where(s => s.CarouselNumber == carouselNumber);
-            _PitstopContext.Section2Media.RemoveRange(oldEntries);
-            _PitstopContext.SaveChanges();
-        }
-
-        public void SaveCarouselImageVideo(int carouselNumber, string fileName)
-        {
-            // Create a new Section2Media entry with the specified carousel number and file name
-            var newEntry = new Section2Media
-            {
-                CarouselNumber = carouselNumber,
-                FileName = fileName,
-                UploadDate = DateTime.Now // You can set the upload date here
-            };
-
-            _PitstopContext.Section2Media.Add(newEntry);
-            _PitstopContext.SaveChanges();
+            // Retrieve the latest three entries from the database
+            return _PitstopContext.Section2Media.OrderByDescending(m => m.UploadDate).Take(3).ToList();
         }
 
         public string GetLatestFeaturedItemId()
@@ -314,6 +286,10 @@ namespace Pitstop.Service
                 throw ex;
             }
         }
-
+        public List<Testimonial> GetTestimonials()
+        {
+            // Your logic to fetch testimonials from database or other sources
+            return new List<Testimonial>();
+        }
     }   
 }

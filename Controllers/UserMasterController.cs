@@ -9,8 +9,6 @@ using Newtonsoft.Json;
 using System.Reflection;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
 using Microsoft.Extensions.Options;
 using Pitstop.Models.Common;
 
@@ -378,74 +376,107 @@ namespace Pitstop.Controllers
             return result;
         }
       
-       public IActionResult GetDataUserMaster(KTParameters parameters)
+        public IActionResult GetDataUserMaster(KTParameters parameters)
         {
-            string generalSearch = HttpContext.Request.Form["query[generalSearch]"].ToString() != null ? HttpContext.Request.Form["query[generalSearch]"].ToString() : "";
-            string statusSearch = HttpContext.Request.Form["query[Status]"].ToString() != null ? HttpContext.Request.Form["query[Status]"].ToString() : "";
-            string roleSearch = HttpContext.Request.Form["query[Role]"].ToString() != null ? HttpContext.Request.Form["query[Role]"].ToString() : "";
-
-            string? role = !string.IsNullOrEmpty(roleSearch) ? roleSearch : null;
-            bool? statusBool = !string.IsNullOrEmpty(statusSearch) ? statusSearch == "1" ? true : false : null;
-
-            var totalData = _PitstopContext.Users.Where(e => (e.NormalizedUserName.Contains(generalSearch)
-            || e.NormalizedEmail.Contains(generalSearch)) && e.IsActive == true
-            && (statusBool != null ? e.IsUserActive == statusBool : e.IsUserActive != null)
-            && (role != null ? e.AccessTypeId == role : e.AccessTypeId != null)
-            ).Count();
-
-            var skip = (parameters.pagination.page - 1) * parameters.pagination.perpage;
-            var query = _PitstopContext.Users.AsEnumerable();
-
-            if (parameters.sort != null)
+            try
             {
-                PropertyInfo pi = typeof(User).GetProperty(parameters.sort.field);
+                string generalSearch = "";
+                string statusSearch = "";
+                string roleSearch = "";
 
-                if (pi == null)
+                if (HttpContext.Request.Form.TryGetValue("query[generalSearch]", out var generalSearchValue))
                 {
-                    if (parameters.sort.field.Split(".").Count() > 1)
-                    {
-                        //child sorting
-                    }
+                    generalSearch = generalSearchValue.ToString();
+                }
+
+                if (HttpContext.Request.Form.TryGetValue("query[Status]", out var statusSearchValue))
+                {
+                    statusSearch = statusSearchValue.ToString();
+                }
+
+                if (HttpContext.Request.Form.TryGetValue("query[Role]", out var roleSearchValue))
+                {
+                    roleSearch = roleSearchValue.ToString();
+                }
+
+                string role = !string.IsNullOrEmpty(roleSearch) ? roleSearch : null;
+                bool? statusBool = !string.IsNullOrEmpty(statusSearch) ? (statusSearch == "1") : null;
+
+                var query = _PitstopContext.Users
+                    .Where(e => (e.NormalizedUserName.Contains(generalSearch) || e.NormalizedEmail.Contains(generalSearch))
+                            && e.IsActive == true
+                            && (statusBool != null ? e.IsUserActive == statusBool : e.IsUserActive != null)
+                            && (role != null ? e.AccessTypeId == role : e.AccessTypeId != null));
+
+                var totalData = query.Count();
+
+                int skip = 0;
+                int perPage = 10; // Default perPage value
+                if (parameters?.pagination != null)
+                {
+                    skip = (parameters.pagination.page - 1) * parameters.pagination.perpage;
+                    perPage = parameters.pagination.perpage;
                 }
                 else
                 {
-                    if (parameters.sort.sort == "desc")
+                    // Handle the case when parameters or its properties are null
+                }
+
+                if (parameters?.sort != null)
+                {
+                    PropertyInfo pi = typeof(User).GetProperty(parameters.sort.field);
+
+                    if (pi == null)
                     {
-                        query = query.OrderByDescending(x => pi.GetValue(x, null));
+                        if (parameters.sort.field.Split(".").Length > 1)
+                        {
+                            //child sorting
+                        }
                     }
                     else
                     {
-                        query = query.OrderBy(x => pi.GetValue(x, null));
+                        query = parameters.sort.sort == "desc"
+                            ? query.OrderByDescending(x => pi.GetValue(x, null))
+                            : query.OrderBy(x => pi.GetValue(x, null));
                     }
                 }
+
+                var userMasterCollection = query
+                    .Skip(skip)
+                    .Take(perPage)
+                    .ToList();
+
+                var result = userMasterCollection.Select(e => new UserMasterDataList
+                {
+                    UserId = e.Id,
+                    Name = e.NormalizedUserName,
+                    StaffId = e.EmployeeId.ToString(),
+                    Email = e.Email,
+                    Status = e.IsUserActive == true ? "Active" : "Inactive",
+                    Access = _commonService.GetAccessName(e.Id),
+                    Role = _commonService.GetDescriptionOfRole(e.Id),
+                    CreatedBy = _commonService.GetUserName(e.CreatedBy),
+                    CreatedDate = e.CreatedDate.ToShortDateString()
+                }).ToList();
+
+                return Json(new KTResult<List<UserMasterDataList>>
+                {
+                    data = result,
+                    meta = new DataTablePagination
+                    {
+                        perpage = perPage,
+                        total = totalData,
+                        page = parameters?.pagination?.page ?? 1
+                    }
+                });
             }
-
-            var userMasterCollection = query.Where(e => (e.NormalizedUserName.Contains(generalSearch.ToUpper())
-            || e.NormalizedEmail.Contains(generalSearch.ToUpper())) && e.IsActive == true
-            && (statusBool != null ? e.IsUserActive == statusBool : e.IsUserActive != null)
-            && (role != null ? e.AccessTypeId == role : e.AccessTypeId != null))
-                .Skip(skip).Take(parameters.pagination.perpage).ToList();
-
-            var result = new List<UserMasterDataList>(userMasterCollection.Select(e => new UserMasterDataList
+            catch (Exception ex)
             {
-                UserId = e.Id,
-                Name = e.NormalizedUserName,
-                StaffId = e.EmployeeId.ToString(),
-                Email = e.Email,
-                Status = e.IsUserActive == true ? "Active" : "Inactive",
-                Access = _commonService.GetAccessName(e.Id),
-                Role = _commonService.GetDescriptionOfRole(e.Id),
-                CreatedBy = _commonService.GetUserName(e.CreatedBy),
-                CreatedDate = e.CreatedDate.ToShortDateString()
-            }));
-
-            parameters.pagination.total = result != null && result.Count != 0 ? Convert.ToInt32(totalData) : 0;
-
-            return Json(new KTResult<List<UserMasterDataList>>
-            {
-                data = result,
-                meta = parameters.pagination
-            });
+                // Log the exception
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                // Return an appropriate error response
+                return StatusCode(500, "An error occurred while processing the request.");
+            }
         }
 
         public IActionResult GetUserData(string userId)

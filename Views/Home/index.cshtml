@@ -17,11 +17,20 @@
         <!--=============== CSS ===============-->
         <link rel="stylesheet" href="~/home/css/styles.css">
         <link rel="stylesheet" href="~/css/home.css">
+
+        <!-- Add this line to include SweetAlert CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.18/sweetalert2.min.css">
+
+<!-- Add this line to include SweetAlert JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.18/sweetalert2.min.js"></script>
+
     </head>
 
     <style>
+
         .featured__title{
             font-size:25px;
+            margin-top: 50px;
         }
         .featured__price{
             font-size:15px;
@@ -30,21 +39,56 @@
             font-size:15px;
             font-weight: bold;
         }
+       .featured__img{
+            width: 85%;
+       }
+       .featured__button{
+            opacity: 100;
+            margin-bottom: 10px; 
+            background-color: #FF0000 !important;
+            color: white !important;   
+       }
+
+       .story__data{
+        padding:20px;
+       }
 
 
-        /* Make the image fill the container while maintaining aspect ratio */
-        .story__img {
+        .testimonial__description-container {
             width: 100%;
-            height: 100%;
-            margin-left: 2px;
-            margin-top: 115px;
-            border-radius: 25px;
-            padding: 10px;
+            overflow: hidden;
         }
 
-        .story__data{
-            margin-left: 40px;
+        .swiper-slide {
+            padding: 20px;
+            box-sizing: border-box;
         }
+
+        .testimonial__description {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .testimonial__quote {
+            margin-bottom: 10px;
+        }
+
+        .testimonial__perfil-data {
+            margin-top: auto;
+        }
+        .testimonial__image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%; /* Ensure the container takes the full height of its parent */
+        }
+        .testimonial__img {
+            max-width: 100%; /* Make sure the image doesn't exceed its container's width */
+            max-height: 100%; /* Make sure the image doesn't exceed its container's height */
+        }
+
 
     </style>
 
@@ -66,11 +110,14 @@
                         <li class="nav__item">
                             <a href="#featured" class="nav__link">Featured</a>
                         </li>
-                        <li class="nav__item">
+                        @* <li class="nav__item">
                             <a href="#products" class="nav__link">Products</a>
+                        </li> *@
+                        <li class="nav__item">
+                            <a href="#ourStory" class="nav__link">Our Story</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#new" class="nav__link">New</a>
+                            <a href="#Testimonial" class="nav__link">Testimonial</a>
                         </li>
                     </ul>
 
@@ -102,8 +149,8 @@
                                 { *@
                                     <a href="/Dashboard/Index">Dashboard</a>
                                 @* } *@
-                                <a href="/Home/PurchaseHistory">Purchase History</a>
-                                <a href="/Auth/Settings">Account Settings</a>
+                                @* <a href="/Home/PurchaseHistory">Purchase History</a> *@
+                                <a href="/UserMaster/Settings">Account Settings</a>
                                 <a href="/Auth/Logout">Sign Out</a>
                             </div>
                         </div>
@@ -141,64 +188,74 @@
             </section>
 
             <section class="home-bottom" id="home">
-                        <div class="highlight-container card">
-                                <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    @for (int i = 0; i < Model.Section2Medias.Count; i++)
-                                    {
-                                        <li data-bs-target="#carouselExample" data-bs-slide-to="@i" class="@((i == 0) ? "active" : "")"></li>
-                                    }
-                                </ol>
-                                <div class="carousel-inner">
-                                    @for (int i = 0; i < Model.Section2Medias.Count; i++)
-                                    {
-                                        <div class="carousel-item @(i == 0 ? "active" : "")">
-                                            <div class="aspect-ratio-box">
-                                            <img class="c-img" src="@Url.Content("~/Section2Media/" + Model.Section2Medias[i].FileName)" alt="Highlight Image" />
-
-                                        </div>
+                <div class="highlight-container card">
+                    <div id="carouselExample" class="carousel slide carousel-container carousel-fade" data-bs-ride="carousel">
+                        <ol class="carousel-indicators">
+                            @for (int i = 0; i < Model.Section2Medias.Count; i++)
+                            {
+                                <li data-bs-target="#carouselExample" data-bs-slide-to="@i" class="@((i == 0) ? "active" : "")"></li>
+                            }
+                        </ol>
+                        <div class="carousel-inner">
+                            @for (int i = 0; i < Model.Section2Medias.Count; i++)
+                            {
+                                <div class="carousel-item @(i == 0 ? "active" : "")">
+                                    <div class="aspect-ratio-box">
+                                        <img class="c-img" src="@Url.Content("~/Section2Media/" + Model.Section2Medias[i].FileName)" alt="Highlight Image" />
                                     </div>
-                                    }
                                 </div>
-                            <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden"></span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden"></span>
-                            </a>
-                            </div>
-                        <!--end::Card-->
+                            }
                         </div>
-                    <!--end::Card-->
+                        <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden"></span>
+                        </a>
                     </div>
+                </div>
             </section>
 
-            <!--==================== FEATURED ====================-->
+
+      <!--==================== FEATURED ====================-->
             <section class="featured section container" id="featured">
                 <h2 class="section__title">
                     Featured Products
                 </h2>
-
                 <div class="featured__container grid">
                     @foreach (var item in Model.FeaturedItems)
                     {
-                        <article class="featured__card">
+                        <article class="featured__card" onclick="openModal('@item.Id', '@Url.Content("~/Thumbnails/" + item.FileName)', '@item.Title', '@item.Price', '@item.Description','@item.ProductId')">
                             <span class="featured__tag" style="width: 60px;">Sale</span>
-                            <img src="@Url.Content("~/FeaturedItems/" + item.FileName)" alt="" class="featured__img">
+                            <img src="@Url.Content("~/Thumbnails/" + item.FileName)" alt="" class="featured__img">
                             <div class="featured__data">
                                 <h3 class="featured__title">@item.Title</h3>
-                                <span class="featured__price">$@item.Price</span> <!-- Prepend dollar sign -->
+                                <span class="featured__price">$@item.Price</span>
                             </div>
-                            <button class="button featured__button">ADD TO CART</button>
                         </article>
                     }
                 </div>
             </section>
 
+            <!-- Modal -->
+            <div class="modal" id="featuredModal">
+                <div class="modal-content">
+                    <h2 id="modalTitle"></h2>
+                    <div class="modal-img-container">
+                        <img id="modalImage" src="" alt="" class="modal-img">
+                    </div>
+                    <span id="modalDescription" class="featured__description"></span>
+                    <span id="modalPrice" class="featured__price"></span>
+                    <!-- Add to Cart button -->
+                    <button id="addToCartButton" class="button featured__button">Add To Cart</button>
+                </div>
+            </div>
+
+
             <!--==================== STORY ====================-->
-            <section class="story section container">
+            <section class="story section container" id="ourStory">
                 <div class="story__container grid">
                     <div class="story__data">
                         <h2 class="section__title story__section-title">Our Story</h2>
@@ -215,157 +272,289 @@
                 </div>
             </section>
 
-            <!--==================== PRODUCTS ====================-->
-            @* <section class="products section container" id="products">
-            <h2 class="section__title">
-                Products
-            </h2>
 
-            <div class="products__container grid" id="products-container">
-                <!-- Product cards will be dynamically added here -->
+        <!--==================== TESTIMONIAL ====================-->
+<!-- Testimonial Carousel -->
+<section class="testimonial section container" id="testimonialCarousel">
+    <div class="swiper-wrapper">
+        @foreach (var testimonial in Model.Testimonial.Take(6)) 
+        {
+            <div class="swiper-slide">
+                <div class="row">
+                    <!-- Testimonial Description -->
+                    <div class="col-md-4">
+                        <div class="testimonial__description">
+                            <div class="testimonial__quote">
+                                <i class='bx bxs-quote-alt-left'></i>
+                            </div>
+                            <p>@testimonial.Description</p>
+                            <h3>@DateTime.Parse(testimonial.CreatedDate).ToString("dd/MM/yyyy")</h3>
+                            <div class="testimonial__perfil-data">
+                                <span>@testimonial.Name</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial Image -->
+                    <div class="col-md-8">
+                        <div class="testimonial__image-container">
+                            <img src="/Testimonial/@testimonial.Image" alt="" class="testimonial__img">
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section> *@
+        }
+    </div>
+    <div class="swiper-pagination"></div>
+</section>
 
-            <!--==================== TESTIMONIAL ====================-->
-            <section class="testimonial section container">
-                <div class="testimonial__container grid">
-                    <div class="swiper testimonial-swiper">
-                        <div class="swiper-wrapper">
-                            <div class="testimonial__card swiper-slide">
-                                <div class="testimonial__quote">
-                                    <i class='bx bxs-quote-alt-left' ></i>
-                                </div>
-                                <p class="testimonial__description">
-                                    They are the best watches that one acquires, also they are always with the latest 
-                                    news and trends, with a very comfortable price and especially with the attention 
-                                    you receive, they are always attentive to your questions.
-                                </p>
-                                <h3 class="testimonial__date">March 27. 2021</h3>
-        
-                                <div class="testimonial__perfil">
-                                    <img src="home/img/testimonial1.jpg" alt="" class="testimonial__perfil-img">
-        
-                                    <div class="testimonial__perfil-data">
-                                        <span class="testimonial__perfil-name">Lee Doe</span>
-                                        <span class="testimonial__perfil-detail">Director of a company</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="testimonial__card swiper-slide">
-                                <div class="testimonial__quote">
-                                    <i class='bx bxs-quote-alt-left' ></i>
-                                </div>
-                                <p class="testimonial__description">
-                                    They are the best watches that one acquires, also they are always with the latest 
-                                    news and trends, with a very comfortable price and especially with the attention 
-                                    you receive, they are always attentive to your questions.
-                                </p>
-                                <h3 class="testimonial__date">March 27. 2021</h3>
-        
-                                <div class="testimonial__perfil">
-                                    <img src="home/img/testimonial2.jpg" alt="" class="testimonial__perfil-img">
-        
-                                    <div class="testimonial__perfil-data">
-                                        <span class="testimonial__perfil-name">Samantha Mey</span>
-                                        <span class="testimonial__perfil-detail">Director of a company</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="testimonial__card swiper-slide">
-                                <div class="testimonial__quote">
-                                    <i class='bx bxs-quote-alt-left' ></i>
-                                </div>
-                                <p class="testimonial__description">
-                                    They are the best watches that one acquires, also they are always with the latest 
-                                    news and trends, with a very comfortable price and especially with the attention 
-                                    you receive, they are always attentive to your questions.
-                                </p>
-                                <h3 class="testimonial__date">March 27. 2021</h3>
-        
-                                <div class="testimonial__perfil">
-                                    <img src="home/img/testimonial3.jpg" alt="" class="testimonial__perfil-img">
-        
-                                    <div class="testimonial__perfil-data">
-                                        <span class="testimonial__perfil-name">Raul Zaman</span>
-                                        <span class="testimonial__perfil-detail">Director of a company</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="swiper-button-next">
-                            <i class='bx bx-right-arrow-alt' ></i>
-                        </div>
-                        <div class="swiper-button-prev">
-                            <i class='bx bx-left-arrow-alt' ></i>
-                        </div>
-                    </div>
-
-                    <div class="testimonial__images">
-                        <div class="testimonial__square"></div>
-                        <img src="home/img/testimonial.png" alt="" class="testimonial__img">
-                    </div>
-                </div>
-            </section>
-
-            <!--==================== NEW ====================-->
-            @* <section class="new section container" id="new">
-                <h2 class="section__title">
-                    New Arrivals
-                </h2>
-                
-                <div class="new__container">
-                    <div class="swiper new-swiper">
-                        <div class="swiper-wrapper">
-
-                            <article class="new__card swiper-slide">
-                                <span class="new__tag">New</span>
-                                <img src="home/img/new1.png" alt="" class="new__img">
-                                <div class="new__data">
-                                    <h3 class="new__title">Longines rose</h3>
-                                    <span class="new__price">$980</span>
-                                </div>
-                               <div><button class="button new__button">ADD TO CART</button></div>
-                            </article>
-
-                            <article class="new__card swiper-slide">
-                                <span class="new__tag">New</span>
-                                <img src="home/img/new2.png" alt="" class="new__img">
-                                <div class="new__data">
-                                    <h3 class="new__title">Jazzmaster</h3>
-                                    <span class="new__price">$1150</span>
-                                </div>
-                                <div><button class="button new__button">ADD TO CART</button></div>
-                            </article>
-
-                            <article class="new__card swiper-slide">
-                                <span class="new__tag">New</span>
-                                <img src="home/img/new3.png" alt="" class="new__img">
-                                <div class="new__data">
-                                    <h3 class="new__title">Dreyfuss gold</h3>
-                                    <span class="new__price">$750</span>
-                                </div>
-                                <button class="button new__button">ADD TO CART</button>
-                            </article>
-
-                            <article class="new__card swiper-slide">
-                                <span class="new__tag">New</span>
-                                <img src="home/img/new4.png" alt="" class="new__img">
-                                <div class="new__data">
-                                    <h3 class="new__title">Portuguese rose</h3>
-                                    <span class="new__price">$1590</span>
-                                </div>
-                                <button class="button new__button">ADD TO CART</button>
-                            </article>
-
-                        </div>
-                    </div>
-                </div>
-            </section> *@
 
         </main>
     </body>
 
-   <script src="~/js/home.js"> </script>
+   <script>
+   $(document).ready(function () {
+    $('#carouselExample').carousel({
+        interval: 6000
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    initSwiper();
+    fetchOurStory();
+});
+
+function initSwiper() {
+    var swiper = new Swiper('.new-swiper', {
+        breakpoints: {
+            768: {
+                slidesPerView: 'auto',
+                spaceBetween: 20,
+                enabled: true,
+            }
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        on: {
+            init: function () {
+                if (window.innerWidth >= 769) {
+                    this.destroy(true, true);
+                }
+            },
+            resize: function () {
+                if (window.innerWidth >= 769) {
+                    this.destroy(true, true);
+                } else if (window.innerWidth <= 768 && !this.initialized) {
+                    this.init();
+                }
+            }
+        }
+    });
+}
+
+
+function fetchOurStory() {
+    const storyTitle = document.getElementById('storyTitle');
+    const storyDescription = document.getElementById('storyDescription');
+    const storyImagePreview = document.getElementById('storyImagePreview');
+
+    fetch('/Home/GetOurStory')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch story data');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data) {
+                storyTitle.textContent = data.title;
+                storyDescription.textContent = data.description;
+                const imageUrl = `/OurStoryImages/${data.imageUrl}`;
+                storyImagePreview.src = imageUrl;
+            } else {
+                console.error('No story data found');
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching or parsing story data:', error);
+        });
+}
+
+// Define a global variable to store product details
+var selectedProduct = {};
+
+function openModal(id, filename, title, price, description, productid) {
+    document.getElementById("modalTitle").innerText = title;
+    document.getElementById("modalImage").src = filename;
+    document.getElementById("modalDescription").innerText = description;
+    document.getElementById("modalPrice").innerText = "$" + price;
+
+    // Store product details in the global variable
+    selectedProduct = {
+        id: id,
+        productid: productid, // Make sure to include the correct productid
+        title: title,
+        price: price,
+        quantity: 1,
+        size: 's',
+    };
+
+    document.getElementById("featuredModal").style.display = "block";
+}
+
+function addToCart() {
+    // Check if a product is selected
+    if (selectedProduct.id && selectedProduct.productid) { // Check if productid is populated
+        // Make AJAX request to add product to cart
+        $.post('/Home/AddToCart', selectedProduct)
+            .done(function(response) {
+                if (response.success) {
+                    // Display success message using SweetAlert
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Product added to cart successfully!',
+                        timer: 2000, // Set the timer to 2 seconds
+                        showConfirmButton: false // Hide the "OK" button
+                    }).then(() => {
+                        // Refresh the page after 2 seconds
+                        location.reload();
+                    });
+                } else {
+                    // Display error message using SweetAlert
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: response.errorMessage || 'Failed to add product to cart.',
+                        timer: 2000, // Set the timer to 2 seconds
+                        showConfirmButton: false // Hide the "OK" button
+                    });
+                }
+            })
+            .fail(function() {
+                // Display error message using SweetAlert
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Failed to add product to cart.',
+                    timer: 2000, // Set the timer to 2 seconds
+                    showConfirmButton: false // Hide the "OK" button
+                });
+            });
+    } else {
+        console.error('No product selected');
+    }
+
+    // Close the modal
+    closeModal();
+}
+
+
+// Attach click event listener to Add to Cart button
+document.getElementById("addToCartButton").addEventListener("click", addToCart);
+
+
+// Get the modal element
+var modal = document.getElementById('featuredModal');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+};
+
+function closeModal() {
+    document.getElementById("featuredModal").style.display = "none";
+}
+
+// Attach click event listener to Add to Cart button
+document.getElementById("addToCartButton").addEventListener("click", addToCart);
+
+//Testimonial//
+$(document).ready(function() {
+    // Function to fetch testimonials from the server
+    function fetchTestimonials() {
+        $.ajax({
+            url: '/Home/GetTestimonials',
+            type: 'GET',
+            success: function(response) {
+                if (response && response.length > 0) {
+                    displayTestimonials(response);
+                } else {
+                    console.error('No testimonials found.');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching testimonials:', error);
+            }
+        });
+    }
+
+    // Function to display testimonials on the webpage
+    function displayTestimonials(testimonials) {
+        var testimonialContainer = $('#testimonialCarousel .swiper-wrapper');
+
+        // Clear existing testimonials
+        testimonialContainer.empty();
+
+        // Iterate over retrieved testimonials and append them to the container
+        testimonials.slice(0, 6).forEach(function(testimonial) { // Limit to the first 6 testimonials
+            var testimonialCard = `
+                <div class="swiper-slide">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="testimonial__description">
+                                <div class="testimonial__quote">
+                                    <i class='bx bxs-quote-alt-left'></i>
+                                </div>
+                                <p>${testimonial.description}</p>
+                                <h3>${formatDate(testimonial.createdDate)}</h3>
+                                <div class="testimonial__perfil-data">
+                                    <span>${testimonial.name}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="testimonial__image">
+                                <img src="/Testimonial/${testimonial.image}" alt="" class="testimonial__img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            testimonialContainer.append(testimonialCard);
+        });
+
+        // Initialize Swiper after appending testimonials
+        var swiper = new Swiper('#testimonialCarousel .swiper-container', {
+            slidesPerView: 'auto',
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '#testimonialCarousel .swiper-pagination',
+                clickable: true,
+            },
+        });
+    }
+
+    // Function to format date
+    function formatDate(dateString) {
+        // Assuming dateString is in the format "dd/MM/yyyy"
+        var parts = dateString.split('/');
+        var formattedDate = new Date(parts[2], parts[1] - 1, parts[0]);
+        return formattedDate.toLocaleDateString();
+    }
+
+    // Fetch testimonials when the document is ready
+    fetchTestimonials();
+});
+
+
+
+</script>

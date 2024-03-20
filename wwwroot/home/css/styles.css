@@ -422,8 +422,8 @@ body.dark-theme {
 }
 
 .featured__img {
-  height: 214px;
   margin-bottom: var(--mb-1);
+  border-radius: 10px;;
 }
 
 .featured__title, 
@@ -487,7 +487,7 @@ body.dark-theme {
 }
 
 .story__square {
-  height: 250px;
+  height: 357px;
   background-color: var(--first-color);
 }
 
@@ -1165,7 +1165,7 @@ body.dark-theme {
 
   .story__square,
   .testimonial__square {
-    height: 450px;
+    height: 635px;
   }
 
   .products__container,
